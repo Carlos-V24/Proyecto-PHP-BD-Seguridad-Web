@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+      <link rel="stylesheet" href="../statics/Barra_navegacion.css">
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      * {box-sizing: border-box}
+      /* Full-width input fields */
+        input[type=text], input[type=number], input[type=password], select{
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+      /*Evita las flechitas en los input number*/
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+
+      /* Set a style for all buttons */
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+      button:hover {
+        opacity:1;
+      }
+      /* Float cancel and signup buttons and add an equal width */
+      .signupbtn {
+        float: right;
+        width: 20%;
+      }
+
+      /* Add padding to container elements */
+      .container {
+        padding: 16px;
+      }
+
+      /* Clear floats */
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='topnav'>
+        <a class='active' href='Inicio.html'>Inicio</a>
+        <a href='#news'>Menu</a>
+        <a href='#contact'>Mapa</a>
+        <div class='topnav-right'>
+          <a href='Registrate.html'>Registrate</a>
+          <a href='Inicio_sesion.html'>Inicio sesion</a>
+        </div>
+    </div>
+    <form action="../dynamics/Captura_datos.php" method="POST" style="border:1px solid #ccc; max-width: 50%; " >
+      <div class="container">
+        <h1>Registrate</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="NCuenta"><b>N° Cuenta</b></label>
+        <input type="text" placeholder="Ingresa tu numero de cuenta" name="NCuenta"
+            title="Ingrese su nùmero de cuenta completo y sin guiòn" maxlength="9"
+            pattern='^\d{9}$'required ><br>
+
+        <label for="Nombre"><b>Nombre</b></label>
+        <input type="text" placeholder="Enter Ingresa tu nombre" name="Nombre" required ><br>
+
+        <label for="Grupo">Grupo</label>
+        <select id="Grupo" name="Grupo">
+      		<option value="null">--Seleccione Grupo--</option>
+          <option value="000">401</option><option value="003">402</option>
+          <option value="006">403</option><option value="009">404</option>
+          <option value="012">405</option><option value="015">406</option>
+          <option value="018">407</option><option value="021">408</option>
+          <option value="024">409</option><option value="027">410</option>
+          <option value="030">411</option><option value="033">412</option>
+          <option value="036">413</option><option value="039">414</option>
+          <option value="042">415</option><option value="045">416</option>
+          <option value="048">417</option><option value="051">451</option>
+          <option value="054">452</option><option value="057">453</option>
+          <option value="060">454</option><option value="063">455</option>
+          <option value="066">456</option><option value="069">457</option>
+          <option value="072">458</option><option value="075">459</option>
+          <option value="078">460</option><option value="081">461</option>
+          <option value="084">462</option><option value="087">463</option>
+          <option value="090">464</option><option value="093">465</option>
+          <option value="096">466</option><option value="099">501</option>
+          <option value="102">502</option><option value="105">503</option>
+          <option value="108">504</option><option value="111">505</option>
+          <option value="114">506</option><option value="117">507</option>
+          <option value="120">508</option><option value="123">509</option>
+          <option value="126">510</option><option value="129">511</option>
+          <option value="132">512</option><option value="135">513</option>
+          <option value="138">514</option><option value="141">515</option>
+          <option value="144">516</option><option value="147">517</option>
+          <option value="150">518</option><option value="153">551</option>
+          <option value="156">552</option><option value="159">553</option>
+          <option value="162">554</option><option value="165">555</option>
+          <option value="168">556</option><option value="171">557</option>
+          <option value="174">558</option><option value="177">559</option>
+          <option value="180">560</option><option value="183">561</option>
+          <option value="186">562</option><option value="189">563</option>
+          <option value="192">564</option><option value="195">601</option>
+          <option value="198">602</option><option value="201">603</option>
+          <option value="204">604</option><option value="207">605</option>
+          <option value="210">606</option><option value="213">607</option>
+          <option value="216">608</option><option value="219">609</option>
+          <option value="222">610</option><option value="225">611</option>
+          <option value="228">612</option><option value="231">613</option>
+          <option value="234">614</option><option value="237">615</option>
+          <option value="240">616</option><option value="243">617</option>
+          <option value="246">618</option><option value="249">619</option>
+          <option value="252">651</option><option value="255">652</option>
+          <option value="258">653</option><option value="261">654</option>
+          <option value="264">655</option><option value="267">656</option>
+          <option value="270">657</option><option value="273">658</option>
+          <option value="276">659</option><option value="279">660</option>
+          <option value="282">661</option><option value="285">662</option>
+          <option value="288">663</option><option value="291">664</option>
+        </select>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Ingrese una contraseña" name="psw" required
+               pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$"
+               title="Ingrese una contraseña con minimo 8 caracteres y almenos dígito, una minúscula y una mayúscula."><br>
+
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repita su contraseña" name="psw-repeat" required
+               pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$"
+               title="Ingrese una contraseña con minimo 8 caracteres y almenos dígito, una minúscula y una mayúscula."><br>
+
+
+
+        <div class="clearfix">
+          <button type="submit" class="signupbtn">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
