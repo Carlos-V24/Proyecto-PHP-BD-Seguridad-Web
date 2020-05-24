@@ -16,9 +16,10 @@ if((isset($_POST['NCuenta'])|isset($_POST['RFC'])) && isset($_POST['Nombre']) &&
   if ($_POST['psw']==$_POST['psw-repeat'] &&
       preg_match('/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$/', $_POST['psw']) &&
       preg_match('/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$/', $_POST['psw-repeat'])){
-        $Contraseña=strip_tags($Contraseña);//Elimina posibles etiquetas
+        $Contraseña = $_POST['psw'];
+        $Contraseña = strip_tags($Contraseña);//Elimina posibles etiquetas
         $Contraseña = htmlentities($Contraseña);//Elimina posibles caracteres especiales
-        $Contraseña=Cifrar($Contraseña);
+        $Contraseña = Cifrar($Contraseña);
   }else{
     echo "<br>Sus contraseñas no coinciden";
   }
@@ -27,7 +28,7 @@ if((isset($_POST['NCuenta'])|isset($_POST['RFC'])) && isset($_POST['Nombre']) &&
     $Extra=$_POST['Grupo'];
     $Contraseña = strip_tags($Contraseña);//Elimina posibles etiquetas
     $Contraseña = htmlentities($Contraseña);//Elimina posibles caracteres especiales
-  }elseif (//////Colegio///////) {
+  }elseif ($_POST['RFC']) {
     // code...
   }else {
     echo "<br>Datos erroneos";
