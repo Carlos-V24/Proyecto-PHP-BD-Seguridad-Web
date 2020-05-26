@@ -51,24 +51,48 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &
   }
   ///////////////////////////Contrseña/////////////////////////////////
   if ($_POST['psw']==$_POST['psw-repeat'] &&
-      preg_match('/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$/', $_POST['psw']) &&
-      preg_match('/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$/', $_POST['psw-repeat'])){
+      preg_match('/^(?=[\w!#$@%&*^+-]*\d)(?=[\w!#$@%&*^+-]*[A-Z])(?=[\w!#@$%&*^+-]*[a-z])(?=[\w!#$%&*^+@-]*[!#$%&*@^+-])\S{8,100}$/', $_POST['psw']) &&
+      preg_match('/^(?=[\w!#$@%&*^+-]*\d)(?=[\w!#$@%&*^+-]*[A-Z])(?=[\w!#@$%&*^+-]*[a-z])(?=[\w!#$%&*^+@-]*[!#$%&*@^+-])\S{8,100}$/', $_POST['psw-repeat'])){
         $Contraseña = Filtrar($_POST['psw']);
         $Contraseña = Cifrar($Contraseña);//Cifras la contraseña
   }else{
+    echo $_POST['psw']."<br>";
+    echo $_POST['psw-repeat']."<br>";
     echo "<br>Sus contraseñas no coinciden";
     $Errores++;
   }
   /////////////////////////Grupo o Colegio/////////////////////////////
-  if (isset($_POST['Grupo']) && preg_match('/^\d{3}$/',$_POST['Grupo'])) {
+  if (isset($_POST['Grupo']) && preg_match('/^\d{1,3}$/',$_POST['Grupo'])) {
     $Extra=Filtrar($_POST['Grupo']);
   }elseif(isset($_POST['Colegio'])){
     $Extra=Filtrar($_POST['Colegio']);
   }else {
-    echo "<br>Datos erroneos";
+    echo "<br>Dato extra erroneos";
     $Errores++;
   }
   if ($Errores==0) {
+    include_once "bd.php";
+    $conexion=connectDB2("coyocafe");
+    if(!$conexion) {
+      echo mysqli_connect_error()."<br>";
+      echo mysqli_connect_errno()."<br>";
+      exit();
+    }
+    $consulta = "SELECT id_cliente FROM Cliente";
+    $ListUs = mysqli_query($conexion, $consulta);
+    $Usuario_existen=false;
+    while($row = mysqli_fetch_array($ListUs)){
+      if ($row['id_cliente']==$Usuario){
+        $Usuario_existen=true;
+      }
+    }
+    if ($Usuario_existen==true) {
+      echo "Usuario ya exitente<br>";
+    }elseif ($Usuario_existen==false ) {
+      $consulta = "INSERT INTO Cliente VALUES ('$Usuario','$Extra','$Nombre','$Contraseña','$ApellidoP','$ApellidoM')";
+      mysqli_query($conexion, $consulta);
+      header("Location: ../templates/Inicio_sesion.html");
+    }
     echo $Contraseña."<br>";
     echo $Usuario."<br>";
     echo $ApellidoP."<br>";
