@@ -77,11 +77,22 @@
 
         <label for="NCuenta"><b>N° Cuenta</b></label>
         <input type="text" placeholder="Ingresa tu numero de cuenta" name="NCuenta"
-            title="Ingrese su nùmero de cuenta completo y sin guiòn" maxlength="9"
-            pattern='^\d{9}$'required ><br>
+        title="Ingrese su nùmero de cuenta completo y sin guiòn" maxlength="9"
+        pattern='^\d{9}$'required ><br>
 
         <label for="Nombre"><b>Nombre</b></label>
-        <input type="text" placeholder="Enter Ingresa tu nombre" name="Nombre" required ><br>
+        <input type="text" placeholder="Ingresa tu nombre" name="Nombre" required maxlength="50"
+        title="Ingresa uno o dos nombres" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+( +[A-Za-zÑñÁÉÍÓÚáéíóú]+|) *$"><br><br>
+
+
+        <label for="ApellidoP"><b>Apellido Paterno</b></label>
+        <input type="text" placeholder="Ingresa tu nombre" name="ApellidoP" required maxlength="20"
+        title="Solo el Apellido Paterno" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+ *$"><br><br>
+
+
+        <label for="ApellidoM"><b>Apellido Materno</b></label>
+        <input type="text" placeholder="Ingresa tu nombre" name="ApellidoM" required maxlength="20"
+        title="Solo el Apellido Paterno" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+ *$"><br><br>
 
         <label for="Grupo">Grupo</label>
         <select id="Grupo" name="Grupo">

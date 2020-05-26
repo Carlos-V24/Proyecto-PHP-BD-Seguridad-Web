@@ -69,28 +69,71 @@
           <a href='Inicio_sesion.html'>Inicio sesion</a>
         </div>
     </div>
-    <form action="Captura_datos.php" ,method="POST "style="border:1px solid #ccc; max-width: 50%; " >
+    <form action="../dynamics/Captura_datos.php" method="POST" style="border:1px solid #ccc; max-width: 50%; " >
       <div class="container">
         <h1>Registrate</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
+        <label for="Nombre"><b>Nombre</b></label>
+        <input type="text" placeholder="Ingresa tu nombre" name="Nombre" required maxlength="50"
+        title="Ingresa uno o dos nombres" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+( +[A-Za-zÑñÁÉÍÓÚáéíóú]+|) *$"><br><br>
+
+
+        <label for="ApellidoP"><b>Apellido Paterno</b></label>
+        <input type="text" placeholder="Ingresa tu nombre" name="ApellidoP" required maxlength="20"
+        title="Solo el Apellido Paterno" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+ *$"><br><br>
+
+
+        <label for="ApellidoM"><b>Apellido Materno</b></label>
+        <input type="text" placeholder="Ingresa tu nombre" name="ApellidoM" required maxlength="20"
+        title="Solo el Apellido Paterno" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú]+ *$"><br><br>
 
         <label for="RFC"><b>RFC</b></label>
-        <input type="text" placeholder="Ingresa tu numero de cuenta" name="RFC" required><br>
+        <input type="text" placeholder="Ingresa tu RFC" name="RFC" required
+        title="Ingrese un RFC correcto" pattern="^[A-Z]{4}\d{2}(0[1-9]|1[0-2])([0-3]1|[0-2][1-9])[A-Z\d]{3}$" maxlength="13"<br><br>
 
-        <label for="email"><b>Nombre</b></label>
-        <input type="text" placeholder="Enter Ingresa tu nombre" name="Nombre" required><br>
 
-        <label for="Colegio">Colegio</label>
-        <select id="Colegio" name="Colegio">
-      		<option value="null">--Seleccione Colegio--</option>
-        </select>
+        <label for="Colegio"><b>Colegio:</b></label>
+        <select  name="Colegio">
+          <option value="null">--Seleccione Colegio--</option>
+          <option value="Fisica">Fisica</option>
+          <option value="Informatica">Informatica</option>
+          <option value="Matematicas">Matematicas</option>
+          <option value="Biologia">Biologia</option>
+          <option value="Educacion Fisica">Educacion Fisica</option>
+          <option value="Morfología, Fisiología y Salud">Morfología, Fisiología y Salud</option>
+          <option value="Orientación Educativa">Orientación Educativa</option>
+          <option value="Psicologia e Higiene Mental">Psicologia e Higiene Mental</option>
+          <option value="Química">Química</option>
+          <option value="Ciencias Sociales">Ciencias Sociales</option>
+          <option value="Geografía">Geografía</option>
+          <option value="Historia">Historia</option>
+          <option value="Alemán">Alemán</option>
+          <option value="Artes Plásticas">Artes Plásticas</option>
+          <option value="Danza">Danza</option>
+          <option value="Dibujo y Modelado">Dibujo y Modelado</option>
+          <option value="Filosofía">Filosofía</option>
+          <option value="Francés">Francés</option>
+          <option value="Inglés">Inglés</option>
+          <option value="Italiano">Italiano</option>
+          <option value="Letras Clásicas">Letras Clásicas</option>
+          <option value="Literatura">Literatura</option>
+          <option value="Música">Música</option>
+          <option value="Teatro">Teatro</option>
+          <option value="ETE">ETE</option>
+        </select><br><br>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required><br>
+        <label for="psw"><b>Contraseña</b></label>
+        <input type="password" placeholder="Ingrese una contraseña" name="psw" required
+               pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$"
+               title="Ingrese una contraseña con minimo 8 caracteres y almenos dígito, una minúscula y una mayúscula."><br>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
+        <label for="psw-repeat"><b>Repita Contraseña</b></label>
+        <input type="password" placeholder="Repita su contraseña" name="psw-repeat" required
+               pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,100}$"
+               title="Ingrese una contraseña con minimo 8 caracteres y almenos dígito, una minúscula y una mayúscula."><br>
+
+
 
         <div class="clearfix">
           <button type="submit" class="signupbtn">Sign Up</button>
