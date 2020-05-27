@@ -91,7 +91,9 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &
     }elseif ($Usuario_existen==false ) {
       $consulta = "INSERT INTO Cliente VALUES ('$Usuario','$Extra','$Nombre','$Contraseña','$ApellidoP','$ApellidoM')";
       mysqli_query($conexion, $consulta);
-      header("Location: ../templates/Inicio_sesion.html");
+      //Una vez finalizados los procedimientos se cierra la conexion con la base
+      mysqli_close($conexion);
+      header("Location: ../dynamics/Inicio_sesion.php");
     }
     echo $Contraseña."<br>";
     echo $Usuario."<br>";

@@ -10,6 +10,11 @@ function Solicitar_RFC(){
   echo "<input type='text' placeholder='Ingresa tu RFC' name='RFC' required";
   echo "title='Ingrese un RFC correcto' pattern='^[A-Z]{4}\d{2}(0[1-9]|1[0-2])([0-3]1|[0-2][1-9])[A-Z\d]{3}$' maxlength='13'<br><br>";
 }
+function Solicitar_Usu(){
+  echo "<label for='Usuario'><b>Usuario</b></label>";
+  echo "<input type='text' placeholder='Ingresa tu RFC' name='Usuario' required";
+  echo "title='Ingrese un RFC correcto o N° de Cuenta' pattern='^([A-Z]{4}\d{2}(0[1-9]|1[0-2])([0-3]1|[0-2][1-9])[A-Z\d]{3}|\d{9}$)$' maxlength='13'<br><br>";
+}
 function Solicitar_Nom(){
   echo "<label for='Nombre'><b>Nombre</b></label>";
   echo "<input type='text' placeholder='Ingresa tu nombre' name='Nombre' required maxlength='50'";
