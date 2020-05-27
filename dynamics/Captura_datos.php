@@ -1,6 +1,6 @@
 <?php
-if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &&
-  (isset($_POST['Grupo'])||isset($_POST['Colegio'])) && isset($_POST['psw']) &&
+if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])) && isset($_POST['Nombre']) &&
+  (isset($_POST['Grupo'])||isset($_POST['Colegio'])||isset($_POST['Extra'])) && isset($_POST['psw']) &&
   isset($_POST['psw-repeat']) && isset($_POST['ApellidoP']) && isset($_POST['ApellidoM'])) {
     include_once "Encrypt_PassW.php";
     include_once "Filtrar.php";
@@ -31,8 +31,8 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &
       echo "Dato Invalido: Nombre<br>";
       $Errores++;
     }
-  ////////////////////Usuario(N°Cuenta o RFC)//////////////////////////
-  if( isset($_POST['NCuenta']) && preg_match('/^\d{9}$/', $_POST['NCuenta'])) {
+  ////////////////////Usuario(N°Cuenta, RFC o N°Trabajador)//////////////////////////
+  if( isset($_POST['NCuenta']) && preg_match('/^3(1[6-9]|2[0-2])\d{6}$/', $_POST['NCuenta'])) {
     $Usuario=Filtrar($_POST['NCuenta']);
   }elseif (isset($_POST['RFC']) && preg_match('/^[A-Z]{4}\d{2}(0[1-9]|1[0-2])([0-3]1|[0-2][1-9])[A-Z\d]{3}$/', $_POST['RFC']) && $RFCRequerimientos==3) {
       $RFCComponentes[]= substr(strtoupper($_POST['ApellidoP']), 0, 2);
@@ -45,6 +45,8 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &
       }else {
         $Usuario=$_POST['RFC'];
       }
+  }elseif ($_POST['NTrabajador'] && preg_match('/^\d{6}$/', $_POST['NTrabajador'])) {
+    $Usuario=Filtrar($_POST['NTrabajador']);
   }else {
     echo "Datos id_usuario incorrecto";
     $Errores++;
@@ -61,11 +63,17 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])) && isset($_POST['Nombre']) &
     echo "<br>Sus contraseñas no coinciden";
     $Errores++;
   }
-  /////////////////////////Grupo o Colegio/////////////////////////////
-  if (isset($_POST['Grupo']) && preg_match('/^\d{1,3}$/',$_POST['Grupo'])) {
+  /////////////////////////Grupo, Colegio o Extra/////////////////////////////
+  if (isset($_POST['Grupo']) && $_POST['Grupo']>=1 && $_POST['Grupo']<=98) {
     $Extra=Filtrar($_POST['Grupo']);
-  }elseif(isset($_POST['Colegio'])){
+  }elseif(isset($_POST['Colegio']) && $_POST['Colegio']>=99 && $_POST['Colegio']<=123){
     $Extra=Filtrar($_POST['Colegio']);
+  }elseif (isset($_POST['Extra']) && $_POST['Extra']==("Trabajador"||"Funcionario")) {
+    if ($_POST['Extra']=="Trabajador") {
+      $Extra=124;
+    }elseif ($_POST['Extra']=="Funcionario") {
+      $Extra=125;
+    }
   }else {
     echo "<br>Dato extra erroneos";
     $Errores++;
