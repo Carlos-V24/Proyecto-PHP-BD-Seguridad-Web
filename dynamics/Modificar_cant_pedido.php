@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Aumentar cantidad") {
-  echo "<link rel='stylesheet' href='../statics/Barra_navegacion.css'>";
-  echo "<link rel='stylesheet' href='../statics/Estilo_cuestionarios.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
   echo "<meta charset='utf-8'>";
       include_once "Barrara_navegacion.php";
       include_once "Aliment_form.php";

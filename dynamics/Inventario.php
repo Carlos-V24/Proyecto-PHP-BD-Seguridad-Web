@@ -1,6 +1,6 @@
 <?php
-echo "<link rel='stylesheet' href='../statics/Barra_navegacion.css'>";
-echo "<link rel='stylesheet' href='../statics/Menu_galeria.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Menu_galeria.css'>";
 echo "<link rel='stylesheet' href='../statics/Estilo_menu.css'>";
 echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
