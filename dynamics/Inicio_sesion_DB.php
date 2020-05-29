@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
   include_once "bd.php";
   include_once "Encrypt_PassW.php";
@@ -33,7 +35,8 @@ if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
   if ($ContraseñaBD===$Contraseña) {
     echo "Nice, sea bienvenido joven(Se inicia la sesion)";
     /*Aqui se inicia la sesiom*/
-    header("Location: ../templates/Inicio.html");
+    $_SESSION['psw']=$Contraseña;
+    header("Location: ../templates/Inicio.php");
   }else {
     echo $Contraseña;
     echo $ContraseñaBD;

@@ -4,7 +4,7 @@ function Barra_navegacion(){
           <h1>Café <i<>\"El coyotito\"</i></h1>";
   echo "  <nav>
             <div class='topnav'>
-              <a id='Inicio' href='../templates/Inicio.html'>Inicio</a>
+              <a id='Inicio' href='../dynamics/Inicio.php'>Inicio</a>
               <a id='Menu' href='Menu.php'>Menu</a>
               <a id=''href='#contact'>Mapa</a>
               <a id='Mis_pedidos' href='Mis_pedidos.php'>Pedidos</a>";
