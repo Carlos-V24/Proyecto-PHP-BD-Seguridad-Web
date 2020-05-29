@@ -78,6 +78,7 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
     echo "<br>Dato extra erroneos";
     $Errores++;
   }
+  ////////////////////////////////Inserciion de datos///////////////////////////////////////////
   if ($Errores==0) {
     include_once "bd.php";
     $conexion=connectDB2("coyocafe");
