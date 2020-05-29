@@ -1,4 +1,7 @@
 <?php
+session_start();
+if( isset($_SESSION['Usuario']))
+{
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
@@ -25,7 +28,7 @@ echo "<meta charset='utf-8'>";
     $Total=0;
     $MaxHora= time() + ($Pedidos_Perosna*5*60);
     $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento
-                  WHERE id_cliente='319019566' AND id_estado_ent='1' ";
+                  WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
     echo "<form action='Finalizar_pedido_BD.php' method='post'>";
     echo "<table>";
@@ -48,5 +51,7 @@ echo "<meta charset='utf-8'>";
     echo "</tr>";
     echo "</table>";
     echo "<input type='submit' name='Finalizar' value='Finalizar'>";
-    
+  }else {
+    header("Location: Inicio.php");
+  }
 ?>

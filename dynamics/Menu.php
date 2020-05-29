@@ -1,4 +1,6 @@
 <?php
+//iniciando sesión
+session_start();
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Menu_galeria.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_menu.css'>";

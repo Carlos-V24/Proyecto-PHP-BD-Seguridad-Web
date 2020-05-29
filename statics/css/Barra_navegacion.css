@@ -34,6 +34,21 @@ nav a:target {
 .nav-right {
   float: right;
 }
+#Cerrar_sesion{
+  background-color: #FF4C00;
+  float: right;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+#Cerrar_sesion:hover{
+  background-color: #884C28;
+  color: white;
+}
 header{
   background-image: url('../img/Header.jpg');
   background-repeat: no-repeat;

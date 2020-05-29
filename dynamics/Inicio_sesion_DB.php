@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
   include_once "bd.php";
   include_once "Encrypt_PassW.php";
@@ -33,10 +32,21 @@ if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
   $ContraseñaBD = Descifrar($ContraseñaBD);
   //Compara las contraseñas
   if ($ContraseñaBD===$Contraseña) {
+    $consulta = "SELECT * FROM Cliente WHERE id_cliente='$Usuario'";
+    $respuesta = mysqli_query($conexion, $consulta);
+    while ($Datos=mysqli_fetch_array($respuesta)) {
+      $Extra=$Datos['id_extra_clie'];
+      $Nombre=$Datos['Nombre'];
+      $ApellidoP=$Datos['ApellidoP'];
+    }
     echo "Nice, sea bienvenido joven(Se inicia la sesion)";
     /*Aqui se inicia la sesiom*/
+    $_SESSION['Extra']=$Extra;
+    $_SESSION['Nombre']=$Nombre;
+    $_SESSION['ApellidoP']=$ApellidoP;
+    $_SESSION['Usuario']=$Usuario;
     $_SESSION['psw']=$Contraseña;
-    header("Location: ../templates/Inicio.php");
+    header("Location: Inicio.php");
   }else {
     echo $Contraseña;
     echo $ContraseñaBD;

@@ -1,9 +1,6 @@
 <?php
 //iniciando sesión
-session_name("Coyocafe");
-session_id("0026");
 session_start();
-
 if(! isset($_SESSION['psw']))
 {
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";

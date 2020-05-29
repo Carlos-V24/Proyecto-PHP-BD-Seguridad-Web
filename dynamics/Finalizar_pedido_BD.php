@@ -1,5 +1,8 @@
 <?php
 if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
+      session_start();
+      if( isset($_SESSION['Usuario']))
+      {
       include_once "bd.php";
       $conexion=connectDB2("coyocafe");
       if(!$conexion) {
@@ -8,7 +11,7 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
         exit();
       }
       $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento
-                    WHERE id_cliente='319019566' AND id_estado_ent='1' ";
+                    WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
       $respuesta = mysqli_query($conexion, $consulta);
       while ($row = mysqli_fetch_array($respuesta)) {
         $id[]=$row['id_alimento'];
@@ -27,9 +30,12 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
         $consulta = "UPDATE Alimento SET stock='$Stock_sub' WHERE id_alimento='$id_sub' LIMIT 1";
         mysqli_query($conexion, $consulta);
       }
-      $consulta = "UPDATE pedidoos SET id_estado_ent='2' WHERE id_cliente='319019566'  AND id_estado_ent='1' LIMIT 1";
+      $consulta = "UPDATE pedidoos SET id_estado_ent='2' WHERE id_cliente='".$_SESSION['Usuario']."'  AND id_estado_ent='1' LIMIT 1";
       mysqli_query($conexion, $consulta);
       Header("Location:Mis_pedidos.php");
+    }else {
+      header("Location: Inicio.php");
+    }
 }else {
   echo "Error";
 }

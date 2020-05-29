@@ -1,9 +1,6 @@
 <?php
 //iniciando sesión
-session_name("Coyocafe");
-session_id("0026");
 session_start();
-
 if(! isset($_SESSION['psw']))
 {
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
@@ -13,14 +10,17 @@ if(! isset($_SESSION['psw']))
   include_once "Cuest_form.php";
   include_once "bd.php";
   Barra_navegacion();
-  echo "<form action='Inicio_sesion_DB.php' method='POST' style='border:1px solid #ccc; max-width: 50%; ' >";
-  echo "<div class='container'>";
+  echo "<form action='Inicio_sesion_DB.php' method='POST'>";
+  echo "<article>";
+    echo "<section class='Encabezado'>";
+    echo "<h1>Iniciar sesion<h1>";
+    echo "</section>";
+    echo "<section class='Cuestionario'>";;
   Solicitar_Usu();
   Solicitar_Psw();
-  echo "  <div class='clearfix'>
-  <button type='submit' name='signupbtn' class='signupbtn'>Sign Up</button>
-  </div>";
-  echo "</div>";
+  echo "<input type='submit' class='Ingresar' Value='Ingresar'>";
+    echo "<section>";
+    echo "</article>";
 }
 else {
   header("Location: Inicio.php");

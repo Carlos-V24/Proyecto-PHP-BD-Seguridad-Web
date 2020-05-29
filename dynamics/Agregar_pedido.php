@@ -1,5 +1,8 @@
 <?php
 if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Agregar al pedido") {
+  session_start();
+  if( isset($_SESSION['psw']))
+  {
   $id=intval($_POST['id_alimento']);
   echo $id."<br>";
   include_once "bd.php";
@@ -10,17 +13,17 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
     echo mysqli_connect_errno()."<br>";
     exit();
   }
-    $consulta = "SELECT * FROM Pedidoos WHERE id_cliente='319019566' AND id_estado_ent='1' ";
+    $consulta = "SELECT * FROM Pedidoos WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
     $Pedidos_Perosna=0;
     while($row = mysqli_fetch_array($respuesta)){
-      if($row['id_cliente']==319019566)
+      if($row['id_cliente']==$_SESSION['Usuario'])
       $Pedidos_Perosna++;
     }
     if ($Pedidos_Perosna==0) {
-      $consulta = "INSERT INTO Pedidoos(id_cliente,id_estado_ent,id_lugar_entrega) VALUES ('319019566','1','1')";
+      $consulta = "INSERT INTO Pedidoos(id_cliente,id_estado_ent,id_lugar_entrega) VALUES ('".$_SESSION['Usuario']."','1','1')";
       $respuesta = mysqli_query($conexion, $consulta);
-      $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='319019566' AND id_estado_ent='1' LIMIT 1";
+      $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' LIMIT 1";
       $respuesta = mysqli_query($conexion, $consulta);
       $Pedidos_Perosna=0;
       while($row = mysqli_fetch_array($respuesta)){
@@ -31,7 +34,7 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
       $respuesta = mysqli_query($conexion, $consulta);
       header("Location:Mis_pedidos.php");
     }else {
-      $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='319019566' AND id_estado_ent='1' LIMIT 1";
+      $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' LIMIT 1";
       $respuesta = mysqli_query($conexion, $consulta);
       while($row = mysqli_fetch_array($respuesta)){
         $Pedido=$row['id_pedido'];
@@ -55,6 +58,9 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
         echo "Ya existe";
       }
     }
+  }else {
+    header("Location: Inicio_sesion.php");
+  }
 }else {
   echo "Error";
 }
