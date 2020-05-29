@@ -27,8 +27,14 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
         echo "Nombre del alimento: ".$row['Nombre']."<br>";
         echo "Precio: ".$row['Precio']."<br>";
         echo "Cantidad: ";
-        echo "<input type='text' placeholder='Cantidad del alimento' name='Cantidad' required maxlength='2' value='".$row['cantidad']."'";
-        echo "title='Ingrse un numero mayor a 1 y menor a 20' pattern='^([1-9]|1[0-9]|20)$'>";
+        echo "<input type='number' name='Cantidad' required maxlength='2' value='".$row['cantidad']."'";
+        if ($row['Stock']>20) {
+          echo "title='Ingrse un numero mayor a 1 y menor a 20' min='1' max='20'>";
+        }else {
+          echo "title='Ingrse un numero mayor a 1 y menor a ".$row['Stock']."' min='1' max='".$row['Stock']."'";
+
+        }
+
         echo "<br><br>";
         echo "<input type='hidden' name='id_alimento' value='".$row['id_alimento']."'>";
         echo "<center><input type='submit' name='id_".$row['id_alimento']."' value='Modificar'>";

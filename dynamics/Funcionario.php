@@ -6,8 +6,12 @@ echo "<meta charset='utf-8'>";
     include_once "Cuest_form.php";
     include_once "bd.php";
     Barra_navegacion();
-    echo "<form action='../dynamics/Captura_datos.php' method='POST' style='border:1px solid #ccc; max-width: 50%; ' >";
-    echo "<div class='container'>";
+    echo "<article class='Registro'>";
+    echo "<section class='Encabezado'>";
+    echo "<h1>Registro Profesor<h1>";
+    echo "</section>";
+    echo "<form action='../dynamics/Captura_datos.php' method='POST' >";
+    echo "<section>";
             Solicitar_RFC();
             Solicitar_Nom();
             Solicitar_Apell_P();
@@ -15,8 +19,7 @@ echo "<meta charset='utf-8'>";
     echo "  <input type='hidden' name='Extra' value='Funcionario'>";
             Solicitar_Psw();
             Solicitar_Psw_Rpt();
-    echo "  <div class='clearfix'>
-              <button type='submit' class='signupbtn'>Sign Up</button>
-              </div>";
-    echo "</div>";
+    echo "<input type='submit' class='Ingresar' Value='Ingresar'><br><br><br><br>";
+    echo "</section";
+    echo "</article>";
 ?>

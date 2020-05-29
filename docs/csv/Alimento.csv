@@ -1,0 +1,60 @@
+id_alimento,Nombre,Stock,Precio,img_url
+1,Acidulados,100,1,Acidulados.jpg
+2,Agua 1 Lt,20,12,Agua_1lt.jpg
+3,Agua 600ml,20,7,Agua_600ml.jpg
+4,Barritas Fresa,15,10,Barritas_Fresa.jpg
+5,Barritas Piña,15,10,Barritas_Piñajpg
+6,Boing Fresa 500ml,10,10,BoingFresa.jpg
+7,Boing Mango 500ml,10,10,BoingMango.jpg
+8,Boing Manzana 500ml,10,10,BoingManzana.jpg
+9,Boing Naranja 500ml,10,10,BoingNaranja.jpg
+10,Boing Uva 500ml,10,10,BoingUva.jpg
+11,Cafe 450ml,250,15,Cafe450.png
+12,Canelitas,10,12,Canelitas.jpg
+13,Chetos Colmillos,10,10,C_Colmillos.jpg
+14,Chetos Flaming Hot,10,10,C_Flaming_Hot.jpg
+15,Chetos Nacho,10,10,C_Nacho.png
+16,Chetos Poffs,10,10,C_Puffs.jpg
+17,Chetos Torciditos,10,10,C_Torcidos.jpg
+18,Chips Fuego,10,12,Chs_Fuego.jpg
+19,Chips Jalapeño,10,12,Chs_Jalapeño.jpg
+20,Chips Sal del mar,10,12,Chs_Saldemar.jpg
+21,Coca Cola 600ml,25,12,Coca600.jpg
+22,Cuernito de jamon con queso,20,20,Cuernito.jpg
+23,Dona,15,15,Dona.jpg
+24,Doritos Flaming Hot,10,12,D_FH.png
+25,Doritos Incognita,10,12,D_I.jpg
+26,Doritos Nacho,10,12,Doritos_Nacho.jpeg
+27,Emperador Chocolate,10,12,Emperador_C.jpg
+28,Fritos sal y limon,10,10,Fritos.jpg
+29,Gatorade limalimon 1 Lt,12,28,G_limalimon1.jpg
+30,Gatorade limalimon 600ml,12,16,G_limalimon600.png
+31,Gatorade naranja 1 Lt,12,28,G_naranja1.jpg
+32,Gatorade naranja 600ml,12,16,G_naranja600.jpg
+33,Gatorade ponche de frutas 1 Lt,12,28,G_PdeF1.jpg
+34,Gatorade ponche de frutas 600ml,12,16,G_PdeF600.png
+35,Gatorade uva 600ml,12,28,G_uva1.jpg
+36,Gatorade uva1 Lt,12,16,G_uva600.jpg
+37,Jumex Durazno 600ml,5,15,Jumex_d600.png
+38,Jumex Mango600ml,5,15,Jumex_Mango600.jpg
+39,Jumex Manzana 600ml,5,15,Jumex_Manzana600.jpg
+40,Maruchan,30,20,Maruchan.jpg
+41,Oreos,15,12,Oreo.jpg
+42,Panditas,30,10,Panditas.jpg
+43,Pelon pelo rico,30,5,Pelon_pelo.jpg
+44,Picafresa,200,.5,Picafresa.jpg
+45,Principe chocolate,10,12,P_Chocolate.jpg
+46,Principe limon,10,12,P_limon.png
+47,Pulparindo,30,3,Pulparindo.jpg
+48,Rancheritos,10,10,Rancheritos.jpg
+49,Rockaleta,50,8,Rocaleta.jpg
+50,Ruffles queso,10,10,Ruffles_queso.jpg
+51,Sabritas Adobadas,10,12,Sabritas_AD.jpg
+52,Sabritas Flaming Hot,10,12,Sabritas_FH.jpg
+53,Sabritas Limon,10,12,Sabritas_Limon.jpg
+54,Sabritas Original,10,12,Sabritas_Original.jpg
+55,Sandwich de pollo,10,25,Sandwich_pollo.jpg
+56,Takis Fuego,10,12,Takis_Fuego.jpg
+57,Tamborcitos,200,.5,Tamborcitos.jpg
+58,Triki Trakes,10,10,Triki_Trakes.jpg
+59,Wninis,80,5,Winis.jpg

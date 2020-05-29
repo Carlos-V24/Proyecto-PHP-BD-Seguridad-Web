@@ -10,12 +10,18 @@ echo "<meta charset='utf-8'>";
     echo "<h1>Iniciar sesion<h1>";
     echo "</section>";
     echo "<section class='Cuestionario'>";
-    echo "<form action='Alumnos.php' style='border:1px solid #ccc; max-width: 50%; ' >
+    echo "<form action='Alumnos.php'>
           <button type='submit'>Alumno</button>
           </form>";
-    echo "<form action='Profesor.php' style='border:1px solid #ccc; max-width: 50%; ' >
-          <button type='submit'>Empleado</button>
+    echo "<form action='Profesor.php'>
+          <button type='submit'>Profesor</button>
           </form>";
-    echo "<section>";
+    echo "<form action='Funcionario.php'' >
+          <button type='submit'>Funcionario</button>
+          </form>";
+    echo "<form action='Trabajador.php'>
+          <button type='submit'>Trabajador</button>
+          </form>";
+    echo "</section>";
     echo "</article>";
 ?>

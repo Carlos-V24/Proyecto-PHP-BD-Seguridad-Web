@@ -1,24 +1,24 @@
-div.gallery {
+section.activos div.Nenviado {
   margin: 5px;
   border: 1px solid #553313;
   float: left;
-  width: 23%;
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
+  width: 250px;
 }
 
-div.gallery:hover {
+section.activos div.Nenviado:hover {
   border: 1px solid #1597c3;
   box-shadow: 1px 1px 5px 5px #fffe00;
 }
 
-div.gallery img {
+section.activos div.Nenviado img {
   background-color: white;
   width: 100%;
-  height: 300px;
+  height: 180px;
 }
 
-div.desc {
+section.activos div.desc {
   line-height: 1.8;
   background-color: #553313;
   width: auto;
@@ -27,7 +27,7 @@ div.desc {
   color: white;
 
 }
-div.desc input[type='submit']{
+section.activos div.desc input[type='submit']{
   background-color: #FF4C00;
   width: 150px;
   border: none;
@@ -36,10 +36,20 @@ div.desc input[type='submit']{
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 30px;
+}
+input[name='Finalizar']{
+  float: right;
+  background-color: #46230f;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin: 4px 2px;
+  border-radius: 30px;
 
 }
 
-section h1{
+section.activos h1{
   background-color: #553313;
   text-align: center;
   padding-top: 5px;
@@ -53,4 +63,6 @@ section h1{
 section{
   margin-left: 5%;
   margin-right: 5%;
+}
+section.activos{
 }

@@ -1,0 +1,35 @@
+table {
+  font-family: Verdana, sans-serif;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 60%;
+  box-shadow: 1px 1px 10px #000000;
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even){
+  background-color: #a66036;
+}
+tr:nth-child(odd){
+  background-color: #ff8826;
+}
+th {
+  text-align: center;
+  background-color: #2b1304;
+}
+input[name='Finalizar']{
+  float: right;
+  background-color: #46230f;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin-right: 20%;
+  margin-top: 15px;
+  border-radius: 30px;
+}

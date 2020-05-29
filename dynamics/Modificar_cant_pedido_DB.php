@@ -2,8 +2,8 @@
 if ( isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Modificar" && isset($_POST['Cantidad'])) {
       include_once "bd.php";
       $id=intval($_POST['id_alimento']);
-      echo $id;
       $Cantidad=intval($_POST['Cantidad']);
+      if ($Cantidad<=20 && $Cantidad>0) {
       $conexion=connectDB2("coyocafe");
       if(!$conexion) {
         echo mysqli_connect_error()."<br>";
@@ -14,6 +14,10 @@ if ( isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alime
                     SET cantidad='$Cantidad' WHERE id_cliente='319019566' AND  carrito_alim.id_alimento='$id' AND id_estado_ent='1' LIMIT 1";
       $respuesta = mysqli_query($conexion, $consulta);
       Header("Location:Mis_pedidos.php");
+    }
+    else {
+      echo "Error";
+    }
 }else {
   echo "Error";
 }

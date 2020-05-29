@@ -5,7 +5,7 @@ echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
     include_once "Cuest_form.php";
     Barra_navegacion();
-    echo "<form action='Inicio_sesion_DB.php' method='POST' style='border:1px solid #ccc; max-width: 50%; ' >";
+    echo "<form action='Inicio_sesion_DB.php' method='POST'>";
     echo "<article>";
     echo "<section class='Encabezado'>";
     echo "<h1>Iniciar sesion<h1>";
