@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['Modificar'])) {
-  echo "<link rel='stylesheet' href='../statics/Barra_navegacion.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
   echo "<link rel='stylesheet' href='../statics/Estilo_cuestionarios.css'>";
   echo "<meta charset='utf-8'>";
       include_once "Barrara_navegacion.php";

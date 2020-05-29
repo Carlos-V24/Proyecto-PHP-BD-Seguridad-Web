@@ -1,0 +1,94 @@
+* {box-sizing: border-box}
+/* Full-width input fields */
+  input[type=text], input[type=number], input[type=password], select{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background-color: #fff1cf;
+  box-shadow: 2px 2px 8px #000000;
+}
+option{
+  text-align: center;
+}
+label{
+  color: white;
+  font-family: Verdana, sans-serif;
+  text-shadow: 2px 2px 8px #000000;
+}
+/*Evita las flechitas en los input number*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+input[type=submit] {
+  background-color: #FF4C00;
+  float: right;
+  width: 20%;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+button[type='submit']{
+  background-color: #FF4C00;
+  width: 200PX;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+/* Add padding to container elements */
+article {
+  border-radius: 50px ;
+  padding: 16px;
+  background-color: #884c28;
+  width: 500px;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section.Encabezado{
+  background: #2b1304;
+  margin-left: -15px;
+  margin-top: -35px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+  border-radius: 50px 50px 5px 5px;
+}
+section.Encabezado h1{
+  text-align: center;
+  padding-left: 20px;
+  padding-top: 30px;
+  margin-bottom: -15px;
+  font-family: Verdana, sans-serif;
+  color: white;
+  font-family: ;
+  font-size: 20px;
+  box-shadow: black;
+}
+section.Cuestionario {
+  margin-bottom: 50px;
+}
+form{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0 solid #ffda82;
+}
