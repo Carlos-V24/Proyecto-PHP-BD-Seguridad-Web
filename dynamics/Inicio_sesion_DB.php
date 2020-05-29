@@ -34,7 +34,7 @@ if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
   if ($ContraseñaBD===$Contraseña) {
     echo "Nice, sea bienvenido joven(Se inicia la sesion)";
     /*Aqui se inicia la sesiom*/
-    header("Location: ../templates/Inicio.html");
+    header("Location: ../templates/Inicio.php");
   }else {
     echo "<H1>FATAL ERROR: Sus contraseñas no coinciden<H1>";
   }
