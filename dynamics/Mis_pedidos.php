@@ -14,7 +14,7 @@ echo "<meta charset='utf-8'>";
     }
 
     $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido
-                LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento WHERE id_cliente='319019566'";
+                LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento WHERE id_cliente='319019566' AND id_estado_ent='1'";
     $respuesta = mysqli_query($conexion, $consulta);
     while($row = mysqli_fetch_array($respuesta)){
       echo "<form action='Modificar_cant_pedido.php' method='post'>";
@@ -34,6 +34,6 @@ echo "<meta charset='utf-8'>";
       echo "</div>";
       echo "</form>";
     }
-    echo "string";
+    echo "<form action='Finalizar_pedido.php' method='post'>";
     echo "<input type='submit' name='Finalizar' value='Finalizar pedido'>";
 ?>

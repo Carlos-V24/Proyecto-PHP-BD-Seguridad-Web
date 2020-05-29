@@ -17,15 +17,7 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
       if($row['id_cliente']==319019566)
       $Pedidos_Perosna++;
     }
-    $consulta = "SELECT * FROM Pedidoos WHERE id_estado_ent='1'";
-    $respuesta = mysqli_query($conexion, $consulta);
-    $Pedidos_actuales=0;
-    while($row = mysqli_fetch_array($respuesta)){
-      if($row['id_estado_ent']==1)
-      $Pedidos_Perosna++;
-    }
     if ($Pedidos_Perosna==0) {
-      $MaxHora= time() + ($Pedidos_actuales*60*5);
       $consulta = "INSERT INTO Pedidoos(id_cliente,id_estado_ent,id_lugar_entrega) VALUES ('319019566','1','1')";
       $respuesta = mysqli_query($conexion, $consulta);
       $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='319019566' AND id_estado_ent='1' LIMIT 1";
@@ -35,7 +27,6 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
         $Pedido=$row['id_pedido'];
       }
       echo $Pedido;
-      echo "ok?";
     }else {
       $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='319019566' AND id_estado_ent='1' LIMIT 1";
       $respuesta = mysqli_query($conexion, $consulta);
