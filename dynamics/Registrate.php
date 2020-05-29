@@ -1,4 +1,11 @@
 <?php
+//iniciando sesión
+session_name("Coyocafe");
+session_id("0026");
+session_start();
+
+if(! isset($_SESSION['psw']))
+{
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
 echo "<meta charset='utf-8'>";
@@ -18,4 +25,8 @@ echo "<meta charset='utf-8'>";
           </form>";
     echo "<section>";
     echo "</article>";
+}
+else {
+    header("Location: Inicio.php");
+}
 ?>

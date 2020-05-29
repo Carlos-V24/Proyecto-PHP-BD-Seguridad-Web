@@ -1,10 +1,13 @@
 <?php
+//iniciando sesión
+session_name("Coyocafe");
+session_id("0026");
 session_start();
 
 if(! isset($_SESSION['psw']))
 {
-  echo "<link rel='stylesheet' href='../statics/Barra_navegacion.css'>";
-  echo "<link rel='stylesheet' href='../statics/Estilo_cuestionarios.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
   echo "<meta charset='utf-8'>";
   include_once "Barrara_navegacion.php";
   include_once "Cuest_form.php";
@@ -15,13 +18,11 @@ if(! isset($_SESSION['psw']))
   Solicitar_Usu();
   Solicitar_Psw();
   echo "  <div class='clearfix'>
-  <button type='submit' class='signupbtn'>Sign Up</button>
+  <button type='submit' name='signupbtn' class='signupbtn'>Sign Up</button>
   </div>";
   echo "</div>";
-
-  $_SESSION['psw'] = (isset($_POST['psw']) && $_POST['psw'] != NULL)? $_POST['psw'] : "No hay contraseña";
 }
 else {
-  header(Inicio.php);
+  header("Location: Inicio.php");
 }
 ?>
