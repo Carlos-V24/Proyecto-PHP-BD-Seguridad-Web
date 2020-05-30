@@ -45,6 +45,20 @@ input[name='Finalizar']{
   margin-top: 15px;
   border-radius: 30px;
 }
+#tipo_entrega{
+  background-color: #46230f;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin-right: 5px;
+  border-radius: 30px;
+}
+#Lugar_entrega{
+  width: 40%;
+  position: absolute;
+  bottom: 15%;
+}
 input.Entregado{
   float: right;
   background-color: #1c6702;
