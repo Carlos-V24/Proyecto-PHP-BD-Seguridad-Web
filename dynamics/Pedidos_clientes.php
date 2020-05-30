@@ -3,6 +3,8 @@ session_name("Admin");
 session_start();
 include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
 include_once "Barrara_navegacion.php";
@@ -27,7 +29,7 @@ exit();
         for ($i=1; $i <count($pedidos) ; $i++) {
         $Total=0;
         $consulta = "SELECT carrito_alim.id_pedido,Alimento.Nombre,Alimento.precio,carrito_alim.cantidad,cliente.nombre,
-                            cliente.ApellidoP,cliente.ApellidoM,tipo_cliente.Tipo_cliente,cliente.id_cliente FROM carrito_alim
+                            cliente.ApellidoP,cliente.ApellidoM,tipo_cliente.Tipo_cliente,cliente.id_cliente, Pedidoos.Max_hora FROM carrito_alim
                     LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido
                     LEFT JOIN Cliente ON Pedidoos.id_cliente=cliente.id_cliente
                     LEFT JOIN extra_cliente ON cliente.id_extra_clie=extra_cliente.id_extra_clie
@@ -36,6 +38,7 @@ exit();
         $respuesta = mysqli_query($conexion, $consulta);
         while($row = mysqli_fetch_array($respuesta)){
           if ($row['id_pedido']>$UltID) {
+            echo "<h3 style='padding-left: 10%; font-family: Verdana, sans-serif;'>Tiempo estimado de entrega: ".$row['Max_hora']."</h3>";
             echo "  <table>";
             echo "    <tr>";
             echo "      <th class=''>id_pedido</th>";
@@ -72,6 +75,9 @@ exit();
         echo "      </form>";
       }
     }else {
-      echo "No hay pedidos pendientes";
+      include_once "Tipos_errores.php";
+      Alerta("No hay pedidos pendientes");
     }
+    include_once "Footer.php";
+    Footer();
 ?>

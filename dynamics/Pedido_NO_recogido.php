@@ -18,7 +18,8 @@ while($row = mysqli_fetch_array($respuesta)){
  $Cliente=$row['id_cliente'];
 }
 echo $Cliente;
-echo $Hasta=date("Y-m-d h:i:s", time()+(60*60*24*5));
+//5dias habiles y dos de fin de semana
+echo $Hasta=date("Y-m-d h:i:s", time()+(60*60*24*7));
 $consulta = "INSERT INTO Lista_Negra VALUES('$Cliente','$Hasta')";
 mysqli_query($conexion, $consulta);
 header("Location:Pedidos_clientes.php");

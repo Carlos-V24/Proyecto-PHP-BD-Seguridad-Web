@@ -6,7 +6,7 @@ function Barra_navegacion(){
             <div class='topnav'>
               <a id='Inicio' href='../dynamics/Inicio.php'>Inicio</a>
               <a id='Menu' href='Menu.php'>Menu</a>
-              <a id=''href='#contact'>Mapa</a>";
+              <a id=''href='Mapa.php'>Mapa</a>";
   if (isset($_SESSION['Usuario'])) {
     echo "<a id='Mis_pedidos' href='Mis_pedidos.php'>Pedidos</a>";
     echo "    <div class='nav-right'>
@@ -33,6 +33,8 @@ function Barra_navegacion_empleados(){
     echo "<a href='Pedidos_Finalizados.php'>Pedidos Finalizados</a>";
     echo "<a  href='Inventario.php'>Inventario</a>";
     echo "<a  href='#.php'>Agregar producto</a>";
+    echo "<a  href='Lista_clientes.php'>Clientes</a>";
+    echo "<a  href='Lista_Negra.php'>Lista Negra</a>";
     echo "    <div class='nav-right'>
                   <form action='cerrar_admin.php' method='POST'>
                   <input type='submit' id='Cerrar_sesion' name='cerrar_sesion' value='Cerrar sesion'>

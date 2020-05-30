@@ -36,7 +36,7 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
         if($row['id_estado_ent']==1)
         $Pedidos_Perosna++;
       }
-      $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna*5*60));
+      $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna+1)*5*60);
       echo $Hasta;
       $consulta = "UPDATE pedidoos SET id_estado_ent='2', Max_hora='$Hasta' WHERE id_cliente='".$_SESSION['Usuario']."'  AND id_estado_ent='1' LIMIT 1";
       mysqli_query($conexion, $consulta);

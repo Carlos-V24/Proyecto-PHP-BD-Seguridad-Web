@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['Admin'])) {
 include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
 include_once "Barrara_navegacion.php";
@@ -34,7 +36,7 @@ exit();
                     LEFT JOIN extra_cliente ON cliente.id_extra_clie=extra_cliente.id_extra_clie
                     LEFT JOIN tipo_cliente ON extra_cliente.id_tipo_clie=tipo_cliente.id_tipo_clie
                     LEFT JOIN estado_entrega ON Pedidoos.id_estado_ent=estado_entrega.id_estado_ent
-                    LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento WHERE  pedidoos.id_estado_ent='3' or pedidoos.id_estado_ent='4' AND carrito_alim.id_pedido='".$pedidos[$i]."'";
+                    LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento WHERE  pedidoos.id_estado_ent='3' OR pedidoos.id_estado_ent='4' AND carrito_alim.id_pedido='".$pedidos[$i]."'";
         $respuesta = mysqli_query($conexion, $consulta);
         while($row = mysqli_fetch_array($respuesta)){
           if ($row['id_pedido']>$UltID) {
@@ -53,15 +55,16 @@ exit();
             echo "      <td >".$row['Tipo_cliente']."</td>";
             echo "      <td >".$row['Estado']."</td>";
           }else {
+            echo "    <tr>";
             echo "      <td colspan='4'></td>";
           }
-          echo "        <td class='Alimento'>".$row['Nombre']."</td>";
+          echo "        <td class='Alimento'>".$row['1']."</td>";
           echo "        <td class='Cantidad'>".$row['cantidad']."</td>";
           echo "      </tr>";
           $UltID=$row['id_pedido'];
-          $Total+=$row['precio']*$row['cantidad'];
+          $Total+=($row['precio']*$row['cantidad']);
         }
-        echo "        <tr class='total'>";
+        echo "        <tr>";
         echo "          <td colspan='5' class='total'>Total</td>";
         echo "          <td class='Cantidad'>$ ".$Total."</td>";
         echo "        </tr>";
@@ -72,8 +75,11 @@ exit();
         echo "      </form>";
       }
     }else {
-      echo "No hay peido finalizados";
+      include_once "Tipos_errores.php";
+      Alerta("No hay peido finalizados");
     }
+    include_once "Footer.php";
+    Footer();
   }else {
     header("Location:Pedidos_clientes.php");
   }

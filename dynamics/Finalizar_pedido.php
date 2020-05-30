@@ -4,6 +4,8 @@ if( isset($_SESSION['Usuario']))
 {
     include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
@@ -34,7 +36,7 @@ echo "<meta charset='utf-8'>";
       $Pedidos_Perosna++;
     }
     $Total=0;
-    $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna*5*60));
+    $Hasta=date("Y-m-d h:i:s", time() + (($Pedidos_Perosna+1)*5*45));
     $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento
                   WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
@@ -81,8 +83,11 @@ echo "<meta charset='utf-8'>";
     echo " </select><br>";
     echo "<input type='submit' name='Finalizar' value='Finalizar'>";
   }else {
-    echo "Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;";
+    include_once "Tipos_errores.php";
+    Alerta("Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;");
   }
+  include_once "Footer.php";
+  Footer();
   }else {
     header("Location: Inicio.php");
   }
