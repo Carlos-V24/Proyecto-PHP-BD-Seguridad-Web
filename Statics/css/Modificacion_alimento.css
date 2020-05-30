@@ -1,0 +1,50 @@
+table {
+  font-family: Verdana, sans-serif;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 80%;
+  box-shadow: 1px 1px 10px #000000;
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+th {
+  text-align: center;
+  background-color: #2b1304;
+}
+td{
+  text-align: center;
+  background-color: #955622;
+}
+input[name='Actualizar'][value='Actualizar']{
+  background-color: #185900;
+  float: right;
+  width: 10%;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-right: 10%;
+  box-shadow: 2px 2px 8px #000000;
+}
+input[name='Actualizar'][value='Eliminar']{
+  background-color: #700000;
+  float: right;
+  width: 10%;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-right: 15px;
+  box-shadow: 2px 2px 8px #000000;
+}

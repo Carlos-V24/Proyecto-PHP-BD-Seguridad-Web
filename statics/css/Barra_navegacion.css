@@ -1,0 +1,80 @@
+nav {
+    background-color: #FF4C00;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Verdana, sans-serif;
+    box-shadow: 2px 2px 8px #000000;
+}
+nav a {
+  background: #FF4C00;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+nav a:hover {
+  background-color: #884C28;
+  color: white;
+}
+nav a:target {
+  background-color: #301C1A;
+  color: white;
+}
+.nav-right {
+  float: right;
+}
+#Cerrar_sesion{
+  background-color: #FF4C00;
+  float: right;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 0px;
+  box-shadow: none;
+  margin: 0px;
+}
+#Cerrar_sesion:hover{
+  background-color: #884C28;
+  color: white;
+}
+header{
+  background-image: url('../img/Header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 101.2%;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+header h1{
+  color: white;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  font-size: 50px;
+  box-shadow: black;
+  text-shadow: 2px 2px 8px #000000;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: -10px;
+  letter-spacing: 3.5px;
+}
+header h3{
+  color: white;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  font-size: 30px;
+  box-shadow: black;
+  text-shadow: 2px 2px 8px #000000;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: -10px;
+  letter-spacing: 3.5px;
+}
+body{
+  background: #ffda82;
+}

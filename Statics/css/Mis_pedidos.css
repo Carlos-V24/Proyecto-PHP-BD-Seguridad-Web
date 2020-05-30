@@ -1,0 +1,68 @@
+section.activos div.Nenviado {
+  margin: 5px;
+  border: 1px solid #553313;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  width: 250px;
+}
+
+section.activos div.Nenviado:hover {
+  border: 1px solid #1597c3;
+  box-shadow: 1px 1px 5px 5px #fffe00;
+}
+
+section.activos div.Nenviado img {
+  background-color: white;
+  width: 100%;
+  height: 180px;
+}
+
+section.activos div.desc {
+  line-height: 1.8;
+  background-color: #553313;
+  width: auto;
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+
+}
+section.activos div.desc input[type='submit']{
+  background-color: #FF4C00;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+input[name='Finalizar']{
+  float: right;
+  background-color: #46230f;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin: 4px 2px;
+  border-radius: 30px;
+
+}
+
+section.activos h1{
+  background-color: #553313;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: white;
+  letter-spacing: 3.5px;
+  font-size: 50px;
+  box-shadow: black;
+}
+section{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+section.activos{
+}
