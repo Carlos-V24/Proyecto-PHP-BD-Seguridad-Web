@@ -1,6 +1,9 @@
 <?php
 if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Aumentar cantidad") {
+      include_once "Func_favicon.php";
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
   echo "<meta charset='utf-8'>";
       include_once "Barrara_navegacion.php";
@@ -39,6 +42,8 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
         echo "<input type='hidden' name='id_alimento' value='".$row['id_alimento']."'>";
         echo "<center><input type='submit' name='id_".$row['id_alimento']."' value='Modificar'>";
       }
+      include_once "Footer.php";
+      Footer();
 }else {
   echo "Error";
 }

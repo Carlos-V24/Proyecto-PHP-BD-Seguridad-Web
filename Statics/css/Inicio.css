@@ -1,0 +1,22 @@
+.Bienvenida{
+  font-family: Verdana, sans-serif;
+  margin-top: 30px;
+  margin-left: 50px;
+  color: #331203;
+  font-size: 30px;
+}
+.Bienvenida a:link {
+  color: #331203;
+}
+
+.Bienvenida a:visited {
+  color: #331203;
+}
+
+.Bienvenida a:hover {
+  color: #ff5000;
+}
+
+.Bienvenida a:active {
+  color: #ff5000;
+}

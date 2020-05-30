@@ -2,7 +2,10 @@
 session_start();
 if( isset($_SESSION['Usuario']))
 {
+    include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
@@ -15,9 +18,16 @@ echo "<meta charset='utf-8'>";
       echo mysqli_connect_errno()."<br>";
       exit();
     }
-
+    $consulta = "SELECT * FROM Lista_Negra WHERE id_cliente='".$_SESSION['Usuario']."'";
+    $respuesta = mysqli_query($conexion, $consulta);
+    $Banning=false;
+    if ($row = mysqli_fetch_array($respuesta)) {
+      $Hasta=$row['Hasta'];
+      $Banning=true;
+    }
     //Conexion con la base de datos
     //Solicita todos los grupos
+    if ($Banning==false) {
     $consulta = "SELECT * FROM Pedidoos WHERE id_estado_ent='2'";
     $respuesta = mysqli_query($conexion, $consulta);
     $Pedidos_Perosna=0;
@@ -26,10 +36,11 @@ echo "<meta charset='utf-8'>";
       $Pedidos_Perosna++;
     }
     $Total=0;
-    $MaxHora= time() + ($Pedidos_Perosna*5*60);
+    $Hasta=date("Y-m-d h:i:s", time() + (($Pedidos_Perosna+1)*5*45));
     $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento
                   WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
+    echo "<h3 style='padding-left: 10%; font-family: Verdana, sans-serif;'>Tiempo estimado de entrega: ".$Hasta."</h3>";
     echo "<form action='Finalizar_pedido_BD.php' method='post'>";
     echo "<table>";
     echo "  <tr>";
@@ -50,7 +61,56 @@ echo "<meta charset='utf-8'>";
     echo "<td><center>$ ".$Total."</center></td>";
     echo "</tr>";
     echo "</table>";
-    echo "<input type='submit' name='Finalizar' value='Finalizar'>";
+
+    if(isset($_POST['2'])){
+      $tipo_ent = $_POST['2'];
+      echo "<div id='Lugar_entrega'>";
+      echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label><br>
+      <select id='Lugar_entrega' name='Lugar_entrega'>";
+      echo "<option value='' >--Seleccione una opción--</option>";
+      //Solicita todos los lugares de entrega
+      $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='2'";
+      $respuesta = mysqli_query($conexion, $consulta);
+      while($row = mysqli_fetch_array($respuesta)){
+        echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
+      }
+      echo " </select><br>
+            </div>";
+    }
+    elseif(isset($_POST['1'])){
+      echo "<div id='Lugar_entrega'>";
+      $tipo_ent = $_POST['1'];
+      echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label><br>
+      <select id='Lugar_entrega' name='Lugar_entrega'>";
+      echo "<option value='' >--Seleccione una opción--</option>";
+      //Solicita todos los lugares de entrega
+      $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='1'";
+      $respuesta = mysqli_query($conexion, $consulta);
+      while($row = mysqli_fetch_array($respuesta)){
+        echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
+      }
+      echo " </select><br>
+            </div>";
+    }
+
+
+    echo "<input type='submit' name='Finalizar' value='Finalizar'>
+          </form>";
+    echo "<form action='Finalizar_pedido.php' method='POST'>
+          <label for='tipo_entrega'>Elija un tipo de entrega:</label><br><br>";
+    //Solicita todos los lugares de entrega
+    $consulta = "SELECT id_tipo_ent,Tipo_entrega FROM tipo_entrega ";
+    $respuesta = mysqli_query($conexion, $consulta);
+    while($row = mysqli_fetch_array($respuesta)){
+      echo "<input id='tipo_entrega' type='submit' name='".$row['id_tipo_ent']."' value=".$row['Tipo_entrega'].">";
+    }
+    echo " </form><br>";
+  }else {
+    include_once "Tipos_errores.php";
+    Alerta("Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;");
+  }
+  include_once "Footer.php";
+  Footer();
   }else {
     header("Location: Inicio.php");
   }

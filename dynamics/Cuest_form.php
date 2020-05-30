@@ -21,6 +21,11 @@ function Solicitar_Usu(){
   echo "<input type='text' placeholder='Ingresa tu RFC, N° de cuenta o  N° de trabajador' name='Usuario' required";
   echo "title='Ingrese un RFC correcto o N° de Cuenta' pattern='^([A-Z]{4}\d{2}(0[1-9]|1[0-2])([0-3]1|[0-2][1-9])[A-Z\d]{3}|3(1[6-9]|2[0-2])\d{6}|\d{6})$' maxlength='13'<br><br>";
 }
+function Solicitar_Admin(){
+  echo "<label for='Admin'><b>Nombre del la cuenta</b></label>";
+  echo "<input type='text' placeholder='Ingresa el nombre de la cuenta' name='Admin' required";
+  echo "title='Ingrese un RFC correcto o N° de Cuenta' pattern='^\[\w]{4}$' maxlength='13'<br><br>";
+}
 function Solicitar_Nom(){
   echo "<label for='Nombre'><b>Nombre</b></label>";
   echo "<input type='text' placeholder='Ingresa tu nombre' name='Nombre' required maxlength='50'";

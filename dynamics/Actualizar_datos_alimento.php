@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['Actualizar']) && isset($_POST['Stock']) && isset($_POST['Nombre'])
+if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($_POST['Stock']) && isset($_POST['Nombre'])
     && isset($_POST['id_alimento']) && isset($_POST['Precio']) && $_POST['Stock']>=1
     && $_POST['id_alimento']>=1 && $_POST['Precio']>=.5) {
   include_once "Filtrar.php";
@@ -58,6 +58,29 @@ if (isset($_POST['Actualizar']) && isset($_POST['Stock']) && isset($_POST['Nombr
   echo $Precio."<br>";
   echo $Stock."<br>";
 }
+}elseif (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Eliminar'&& isset($_POST['Stock']) && isset($_POST['Nombre']) && isset($_POST['id_alimento'])){
+        include_once "bd.php";
+        if (preg_match('/^(\d{1,4})$/', $_POST['id_alimento']) && $_POST['id_alimento']>=1) {
+          include_once "Filtrar.php";
+          $id=Filtrar($_POST['id_alimento']);
+        }else {
+          echo "Error id";
+          $Errores++;
+        }
+        $conexion=connectDB2("coyocafe");
+        if(!$conexion) {
+          echo mysqli_connect_error()."<br>";
+          echo mysqli_connect_errno()."<br>";
+          exit();
+        }else {
+          $consulta = "DELETE FROM Alimento WHERE id_alimento='$id'";
+          if (mysqli_query($conexion, $consulta)){
+            echo "Nice";
+            header("Location: ../dynamics/Inventario.php");
+          }else {
+            echo "No se pudo ejecutar la accion, puede ser por que aun hay un pedido con ese alimento";
+          }
+        }
 }else {
   echo "Error";
 }

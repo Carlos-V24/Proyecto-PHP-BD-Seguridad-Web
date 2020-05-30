@@ -1,7 +1,10 @@
 <?php
 if(! isset($_SESSION['psw']))
 {
+    include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
 echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
@@ -24,6 +27,9 @@ echo "<meta charset='utf-8'>";
     echo "<input type='submit' class='Ingresar' Value='Ingresar'><br><br><br><br>";
     echo "</section";
     echo "</article>";
+    echo "</article>";
+    include_once "Footer.php";
+    Footer();
 }else {
     header("Location: Inicio.php");
 }

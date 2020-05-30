@@ -26,11 +26,28 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
         $id_sub=$id[$i];
         echo $stock[$i]."<br>";
         $Stock_sub=$stock[$i]-$Alt[$i];
-        echo $Stock_sub;
         $consulta = "UPDATE Alimento SET stock='$Stock_sub' WHERE id_alimento='$id_sub' LIMIT 1";
         mysqli_query($conexion, $consulta);
       }
-      $consulta = "UPDATE pedidoos SET id_estado_ent='2' WHERE id_cliente='".$_SESSION['Usuario']."'  AND id_estado_ent='1' LIMIT 1";
+      $consulta = "SELECT * FROM Pedidoos WHERE id_estado_ent='2'";
+      $respuesta = mysqli_query($conexion, $consulta);
+      $Pedidos_Perosna=0;
+      while($row = mysqli_fetch_array($respuesta)){
+        if($row['id_estado_ent']==1)
+        $Pedidos_Perosna++;
+      }
+<<<<<<< HEAD
+      $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna+1)*5*60);
+=======
+      //si es para enviar
+      $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna*5*60));
+>>>>>>> 6a1f9c31f796c416ccb3926d963b3bb4df814fe7
+      echo $Hasta;
+      $consulta = "UPDATE pedidoos SET id_estado_ent='2', Max_hora='$Hasta' WHERE id_cliente='".$_SESSION['Usuario']."'  AND id_estado_ent='1' LIMIT 1";
+      mysqli_query($conexion, $consulta);
+      //Se registra lugar de entrega, si no se elige se da por default la cafeteria *arreglar esto
+      $lugar_ent = (isset($_POST['Lugar_entrega']))? $_POST['Lugar_entrega'] : 1;
+      $consulta = "UPDATE Pedidoos SET id_lugar_entrega='$lugar_ent' WHERE id_cliente='".$_SESSION['Usuario']."' AND Max_hora='$Hasta'";
       mysqli_query($conexion, $consulta);
       Header("Location:Mis_pedidos.php");
     }else {
