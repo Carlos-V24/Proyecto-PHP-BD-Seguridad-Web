@@ -59,27 +59,50 @@ echo "<meta charset='utf-8'>";
     echo "<td><center>$ ".$Total."</center></td>";
     echo "</tr>";
     echo "</table>";
-    echo "<label for='Tipo_entrega'><b>Tipo de Entrega</b></label>
-            <select id='Tipo_entrega' name='Tipo_entrega'>";
-            echo "<option value='' >--Seleccione una opción--</option>";
-            //Solicita todos los lugares de entrega
-            $consulta = "SELECT id_tipo_ent FROM lugar_entrega";
-            $respuesta = mysqli_query($conexion, $consulta);
-            while($row = mysqli_fetch_array($respuesta)){
-              echo "<option name='Tipo_entrega' value=".$row['id_tipo_ent'].">".$row['id_tipo_ent']."</option>";
-            }
-    echo " </select><br>";
-    echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label>
-            <select id='Lugar_entrega' name='Lugar_entrega'>";
-            echo "<option value='' >--Seleccione una opción--</option>";
-            //Solicita todos los lugares de entrega
-            $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='1'";
-            $respuesta = mysqli_query($conexion, $consulta);
-            while($row = mysqli_fetch_array($respuesta)){
-              echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
-            }
-    echo " </select><br>";
-    echo "<input type='submit' name='Finalizar' value='Finalizar'>";
+
+    if(isset($_POST['2'])){
+      $tipo_ent = $_POST['2'];
+      echo "<div id='Lugar_entrega'>";
+      echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label><br>
+      <select id='Lugar_entrega' name='Lugar_entrega'>";
+      echo "<option value='' >--Seleccione una opción--</option>";
+      //Solicita todos los lugares de entrega
+      $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='2'";
+      $respuesta = mysqli_query($conexion, $consulta);
+      while($row = mysqli_fetch_array($respuesta)){
+        echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
+      }
+      echo " </select><br>
+            </div>";
+    }
+    elseif(isset($_POST['1'])){
+      echo "<div id='Lugar_entrega'>";
+      $tipo_ent = $_POST['1'];
+      echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label><br>
+      <select id='Lugar_entrega' name='Lugar_entrega'>";
+      echo "<option value='' >--Seleccione una opción--</option>";
+      //Solicita todos los lugares de entrega
+      $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='1'";
+      $respuesta = mysqli_query($conexion, $consulta);
+      while($row = mysqli_fetch_array($respuesta)){
+        echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
+      }
+      echo " </select><br>
+            </div>";
+    }
+
+
+    echo "<input type='submit' name='Finalizar' value='Finalizar'>
+          </form>";
+    echo "<form action='Finalizar_pedido.php' method='POST'>
+          <label for='tipo_entrega'>Elija un tipo de entrega:</label><br><br>";
+    //Solicita todos los lugares de entrega
+    $consulta = "SELECT id_tipo_ent,Tipo_entrega FROM tipo_entrega ";
+    $respuesta = mysqli_query($conexion, $consulta);
+    while($row = mysqli_fetch_array($respuesta)){
+      echo "<input id='tipo_entrega' type='submit' name='".$row['id_tipo_ent']."' value=".$row['Tipo_entrega'].">";
+    }
+    echo " </form><br>";
   }else {
     echo "Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;";
   }
