@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['Admin'])) {
       include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
     include_once "Barrara_navegacion.php";
@@ -39,6 +41,9 @@ echo "<meta charset='utf-8'>";
                 echo "</tr>";
               }
               echo "</table>";
+              echo "</article>";
+              include_once "Footer.php";
+              Footer();
   }else{
     header("Location:Pedidos_clientes.php");
   }

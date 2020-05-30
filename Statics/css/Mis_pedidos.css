@@ -45,10 +45,10 @@ input[name='Finalizar']{
   color: white;
   padding: 8px 10px;
   margin: 4px 2px;
+  margin-right: 50px;
   border-radius: 30px;
 
 }
-
 section.activos h1{
   background-color: #553313;
   text-align: center;
@@ -64,5 +64,14 @@ section{
   margin-left: 5%;
   margin-right: 5%;
 }
-section.activos{
+section.Nenviado h1{
+  background-color: #ff4d0f;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: white;
+  letter-spacing: 3.5px;
+  font-size: 50px;
+  box-shadow: black;
 }

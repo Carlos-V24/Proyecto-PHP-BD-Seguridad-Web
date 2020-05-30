@@ -5,6 +5,8 @@ if (isset($_SESSION['Admin'])) {
 if (isset($_POST['Modificar'])) {
       include_once "Func_favicon.php";
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+  echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Modificacion_alimento.css'>";
   echo "<meta charset='utf-8'>";
@@ -56,6 +58,9 @@ if (isset($_POST['Modificar'])) {
         echo "<input type='submit' name='Actualizar' value='Actualizar'>";
         echo "<input type='submit' name='Actualizar' value='Eliminar'>";
       }
+      echo "</article>";
+      include_once "Footer.php";
+      Footer();
 }else {
   echo "Ocurrio Un error";
   header("Location: ../dynamics/Inventario.php");

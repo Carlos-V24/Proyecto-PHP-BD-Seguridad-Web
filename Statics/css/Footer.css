@@ -1,0 +1,14 @@
+footer{
+  font-size: 15px;
+  background-color: #2f0b07;
+  color: #ffdc93;
+  text-align: center;
+  clear: both;
+  position: relative;
+  width: 101.2%;
+  height: 150px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 50px;
+  margin-bottom: 5px;
+}

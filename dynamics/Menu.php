@@ -3,6 +3,8 @@
 session_start();
 include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Footer.css'>";
+echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Menu_galeria.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_menu.css'>";
 echo "<meta charset='utf-8'>";
@@ -41,4 +43,6 @@ echo "<meta charset='utf-8'>";
         echo "</form>";
       }
       echo "</section>";
+      include_once "Footer.php";
+      Footer();
 ?>

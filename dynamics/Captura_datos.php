@@ -12,24 +12,27 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
       $RFCRequerimientos++;
       $Nombre= Filtrar($_POST['Nombre']);
     }else {
-      echo "Dato Invalido: Nombre<br>";
       $Errores++;
+      setcookie("ERROR","005", time()+2);
+      header("Location: Registrate.php");
     }
     //////////////////////////////Apellido Paterno/////////////////////////////////
     if (preg_match('/[A-Za-zÑñÁÉÍÓÚáéíóú]+ */', $_POST['ApellidoP'])) {
       $RFCRequerimientos++;
       $ApellidoP= Filtrar($_POST['ApellidoP']);
     }else {
-      echo "Dato Invalido: Apellido Paterno<br>";
       $Errores++;
+      setcookie("ERROR","005", time()+2);
+      header("Location: Registrate.php");
     }
     //////////////////////////////Apellido Materno/////////////////////////////////
     if (preg_match('/[A-Za-zÑñÁÉÍÓÚáéíóú]+ */', $_POST['ApellidoM'])) {
       $RFCRequerimientos++;
       $ApellidoM= Filtrar($_POST['ApellidoM']);
     }else {
-      echo "Dato Invalido: Nombre<br>";
       $Errores++;
+      setcookie("ERROR","005", time()+2);
+      header("Location: Registrate.php");
     }
   ////////////////////Usuario(N°Cuenta, RFC o N°Trabajador)//////////////////////////
   if( isset($_POST['NCuenta']) && preg_match('/^3(1[6-9]|2[0-2])\d{6}$/', $_POST['NCuenta'])) {
@@ -48,8 +51,9 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
   }elseif ($_POST['NTrabajador'] && preg_match('/^\d{6}$/', $_POST['NTrabajador'])) {
     $Usuario=Filtrar($_POST['NTrabajador']);
   }else {
-    echo "Datos id_usuario incorrecto";
     $Errores++;
+    setcookie("ERROR","005", time()+2);
+    header("Location: Registrate.php");
   }
   ///////////////////////////Contrseña/////////////////////////////////
   if ($_POST['psw']==$_POST['psw-repeat'] &&
@@ -60,7 +64,8 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
   }else{
     echo $_POST['psw']."<br>";
     echo $_POST['psw-repeat']."<br>";
-    echo "<br>Sus contraseñas no coinciden";
+    setcookie("ERROR_psw","006", time()+2);
+    header("Location: Registrate.php");
     $Errores++;
   }
   /////////////////////////Grupo, Colegio o Extra/////////////////////////////
@@ -75,10 +80,11 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
       $Extra=125;
     }
   }else {
-    echo "<br>Dato extra erroneos";
+    setcookie("ERROR","005", time()+2);
+    header("Location: Registrate.php");
     $Errores++;
   }
-  ////////////////////////////////Inserciion de datos///////////////////////////////////////////
+  ////////////////////////////////Insercion de datos///////////////////////////////////////////
   if ($Errores==0) {
     include_once "bd.php";
     $conexion=connectDB2("coyocafe");
@@ -112,7 +118,7 @@ if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])
     echo $Extra."<br>";
   }
 }else {
-  echo "Ocurrio Un error: Ingrese sus datos denuevo o intente despues";
+  setcookie("ERROR","001", time()+2);
+  header("Location: Registrate.php");
 }
-
 ?>

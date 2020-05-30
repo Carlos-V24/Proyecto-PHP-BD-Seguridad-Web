@@ -48,17 +48,19 @@ if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
     $_SESSION['psw']=$Contraseña;
     header("Location: Inicio.php");
   }else {
-    echo $Contraseña;
-    echo $ContraseñaBD;
-    echo "<H1>FATAL ERROR: Sus contraseñas no coinciden<H1>";
+    setcookie("ERROR","004", time()+2);
+    header("Location: Inicio_sesion.php");
   }
 }else {
-  echo "<H1>FATAL ERROR: Usuario inexistente<H1>";
+  setcookie("ERROR","003", time()+2);
+  header("Location: Inicio_sesion.php");
 }
 }else {
-  echo "Sus datos no coinciden con los establecidos";
+  setcookie("ERROR","002", time()+2);
+  header("Location: Inicio_sesion.php");
 }
 }else {
-  echo "Ha sucedidio un error, intenta denuevo";
+  setcookie("ERROR","001", time()+2);
+  header("Location: Inicio_sesion.php");
 }
 ?>
