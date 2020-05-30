@@ -50,6 +50,26 @@ echo "<meta charset='utf-8'>";
     echo "<td><center>$ ".$Total."</center></td>";
     echo "</tr>";
     echo "</table>";
+    echo "<label for='Tipo_entrega'><b>Tipo de Entrega</b></label>
+            <select id='Tipo_entrega' name='Tipo_entrega'>";
+            echo "<option value='' >--Seleccione una opción--</option>";
+            //Solicita todos los lugares de entrega
+            $consulta = "SELECT id_tipo_ent FROM lugar_entrega";
+            $respuesta = mysqli_query($conexion, $consulta);
+            while($row = mysqli_fetch_array($respuesta)){
+              echo "<option name='Tipo_entrega' value=".$row['id_tipo_ent'].">".$row['id_tipo_ent']."</option>";
+            }
+    echo " </select><br>";
+    echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label>
+            <select id='Lugar_entrega' name='Lugar_entrega'>";
+            echo "<option value='' >--Seleccione una opción--</option>";
+            //Solicita todos los lugares de entrega
+            $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='1'";
+            $respuesta = mysqli_query($conexion, $consulta);
+            while($row = mysqli_fetch_array($respuesta)){
+              echo "<option value=".$row['id_lugar_entrega'].">".$row['Lugar']."</option>";
+            }
+    echo " </select><br>";
     echo "<input type='submit' name='Finalizar' value='Finalizar'>";
   }else {
     header("Location: Inicio.php");
