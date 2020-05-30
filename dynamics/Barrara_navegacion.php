@@ -23,4 +23,26 @@ function Barra_navegacion(){
           </header>";
 
 }
+function Barra_navegacion_empleados(){
+  echo "<header>
+          <h1>Café <i<>\"El coyotito\"</i> Version Empleados</h1>";
+  echo "  <nav>
+            <div class='topnav'>
+              <a href='Pedidos_clientes.php'>Pedidos Pendientes</a>";
+  if (isset($_SESSION['Admin'])) {
+    echo "<a href='Pedidos_Finalizados.php'>Pedidos Finalizados</a>";
+    echo "<a  href='Inventario.php'>Inventario</a>";
+    echo "<a  href='#.php'>Agregar producto</a>";
+    echo "    <div class='nav-right'>
+                  <form action='cerrar_admin.php' method='POST'>
+                  <input type='submit' id='Cerrar_sesion' name='cerrar_sesion' value='Cerrar sesion'>
+                  </form>";
+  }else {
+    echo "      <div class='nav-right'>
+                    <a  href='Inicio_admin.php'>Entrar como Admin</a>";
+  }
+  echo "       </div>
+            </nav><br>
+          </header>";
+}
 ?>

@@ -1,5 +1,6 @@
-* {box-sizing: border-box}
-/* Full-width input fields */
+* {
+  box-sizing: border-box
+}
   input[type=text], input[type=number], input[type=password], select{
   width: 100%;
   padding: 15px;
@@ -21,8 +22,6 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-
-/* Float cancel and signup buttons and add an equal width */
 input[type=submit] {
   background-color: #FF4C00;
   float: right;

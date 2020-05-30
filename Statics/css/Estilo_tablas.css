@@ -5,8 +5,20 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  width: 60%;
+  width: 80%;
   box-shadow: 1px 1px 10px #000000;
+}
+table.finalizados{
+  color: white;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 80%;
+  box-shadow: 1px 1px 10px #000000;
+}
+table.Inventario td{
+  text-align: center;
 }
 th, td {
   text-align: left;
@@ -32,4 +44,60 @@ input[name='Finalizar']{
   margin-right: 20%;
   margin-top: 15px;
   border-radius: 30px;
+}
+input.Entregado{
+  float: right;
+  background-color: #1c6702;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin-right: 10%;
+  margin-bottom: 50px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+input.NRecogido{
+  float: right;
+  background-color: #670202;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin-right: 10px;
+  margin-bottom: 50px;
+  margin-top: -10px;
+  border-radius: 5px;
+}
+input.Eliminar{
+  float: right;
+  background-color: #d4a703;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  margin-right: 10%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+td.total{
+  text-align: right;
+  padding-right: 3%;
+  font-weight: bold;
+}
+td.Nombre{
+  width:40%;
+}
+td.Cantidad{
+  width:15%;
+  text-align: center;
+}
+td.Alimento{
+  width:35%;
+  text-align: center;
+}
+td.Id{
+  text-align: center;
+  width:10%;
 }

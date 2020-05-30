@@ -2,6 +2,7 @@
 session_start();
 if(! isset($_SESSION['psw']))
 {
+    include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'>";
 echo "<meta charset='utf-8'>";

@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['Usuario']))
 {
+    include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Mis_pedidos.css'>";
 echo "<link rel='stylesheet' href='../statics/Estilo_menu.css'>";

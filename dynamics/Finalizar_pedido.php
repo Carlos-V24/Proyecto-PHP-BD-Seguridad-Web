@@ -2,6 +2,7 @@
 session_start();
 if( isset($_SESSION['Usuario']))
 {
+    include_once "Func_favicon.php";
 echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_tablas.css'>";
 echo "<meta charset='utf-8'>";
@@ -15,9 +16,16 @@ echo "<meta charset='utf-8'>";
       echo mysqli_connect_errno()."<br>";
       exit();
     }
-
+    $consulta = "SELECT * FROM Lista_Negra WHERE id_cliente='".$_SESSION['Usuario']."'";
+    $respuesta = mysqli_query($conexion, $consulta);
+    $Banning=false;
+    if ($row = mysqli_fetch_array($respuesta)) {
+      $Hasta=$row['Hasta'];
+      $Banning=true;
+    }
     //Conexion con la base de datos
     //Solicita todos los grupos
+    if ($Banning==false) {
     $consulta = "SELECT * FROM Pedidoos WHERE id_estado_ent='2'";
     $respuesta = mysqli_query($conexion, $consulta);
     $Pedidos_Perosna=0;
@@ -26,10 +34,11 @@ echo "<meta charset='utf-8'>";
       $Pedidos_Perosna++;
     }
     $Total=0;
-    $MaxHora= time() + ($Pedidos_Perosna*5*60);
+    $Hasta=date("Y-m-d h:i:s", time() + ($Pedidos_Perosna*5*60));
     $consulta = "SELECT * FROM carrito_alim LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento
                   WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
+    echo "<h3 style='padding-left: 10%; font-family: Verdana, sans-serif;'>Tiempo estimado de entrega: ".$Hasta."</h3>";
     echo "<form action='Finalizar_pedido_BD.php' method='post'>";
     echo "<table>";
     echo "  <tr>";
@@ -51,6 +60,9 @@ echo "<meta charset='utf-8'>";
     echo "</tr>";
     echo "</table>";
     echo "<input type='submit' name='Finalizar' value='Finalizar'>";
+  }else {
+    echo "Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;";
+  }
   }else {
     header("Location: Inicio.php");
   }
