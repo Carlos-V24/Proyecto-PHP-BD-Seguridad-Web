@@ -11,12 +11,15 @@
 -Descargar XAMPP
 -Activar Apache y MYSQL
 -Descargar el ultimo commit realizado.
+-Crear la base de datos coyocafe.
 -Restaurar la ultima version de la base de datos coyocafe.
 -Configurar tu mysql a la zona horaria America/Mexico_City.
 -Instalar los csv necesarios(estos se encuentran en la carpeta docs/csv).
 -Para acceder desde la interfaz de empleados a las opciones de aministrador usar estos datos:
+
   -**Usuario**:Admin
   -**Contraseña**:KBBdmW7e$tfq54Of5FlPN2pUOVeuISiZJCwFDCPT
+  
  -Ser gentil y no buscar exploids
 
 ### Resumen de funcionamiento:
