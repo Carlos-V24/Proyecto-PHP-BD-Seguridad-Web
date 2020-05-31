@@ -1,5 +1,5 @@
-<?php
-if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Agregar al pedido") {
+<?php// inclusion de un pedido
+if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Agregar al pedido") {//revisa el alimento 
   session_start();
   if( isset($_SESSION['psw']))
   {

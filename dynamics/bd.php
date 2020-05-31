@@ -1,8 +1,8 @@
-<?php
+<?php//Conexion con base
   define("DBUSER","root");
   define("DBHOST","localhost");
   define("PASSWORD_BD","");
-  function connect () {
+  function connect () {//funcion de Conexion
     return mysqli_connect(DBHOST, DBUSER, PASSWORD_BD);
   }
   function connectDB1 ($conexion, $base) {

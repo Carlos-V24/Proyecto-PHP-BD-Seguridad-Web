@@ -1,4 +1,4 @@
-<?php
+<?php//se solitan los datos correspondientes en cada uno de las clientes pertinentes
 function Solicitar_NCuent(){
   echo "<label for='NCuenta'><b>N° Cuenta</b></label>";
   echo "<input type='text' placeholder='Ingresa tu numero de cuenta' name='NCuenta'";
