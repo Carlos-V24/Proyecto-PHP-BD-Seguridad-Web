@@ -21,7 +21,8 @@
     $con = mysqli_connect(DBHOST, 'ADMIN', $psw);
     if (!$con)
     {
-      echo "No se ha podido acceder a la base. <br>";
+      setcookie("ERROR","010", time()+2);
+      header("Location:Inicio_admin.php");
     }
     return $con;
   }

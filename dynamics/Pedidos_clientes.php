@@ -35,11 +35,13 @@ if (count($pedidos)>1) {
     $Total=0;
     //se hace la consulta de los pedidos
     $consulta = "SELECT carrito_alim.id_pedido,Alimento.Nombre,Alimento.precio,carrito_alim.cantidad,cliente.nombre,
-                        cliente.ApellidoP,cliente.ApellidoM,tipo_cliente.Tipo_cliente,cliente.id_cliente, Pedidoos.Max_hora FROM carrito_alim
+                        cliente.ApellidoP,cliente.ApellidoM,tipo_cliente.Tipo_cliente,cliente.id_cliente, Pedidoos.Max_hora, lugar_entrega.Lugar FROM carrito_alim
                 LEFT JOIN Pedidoos ON carrito_alim.id_pedido=Pedidoos.id_pedido
                 LEFT JOIN Cliente ON Pedidoos.id_cliente=cliente.id_cliente
                 LEFT JOIN extra_cliente ON cliente.id_extra_clie=extra_cliente.id_extra_clie
                 LEFT JOIN tipo_cliente ON extra_cliente.id_tipo_clie=tipo_cliente.id_tipo_clie
+                LEFT JOIN lugar_entrega ON Pedidoos.id_lugar_entrega=lugar_entrega.id_lugar_entrega
+                LEFT JOIN tipo_entrega ON lugar_entrega.id_tipo_ent=tipo_entrega.id_tipo_ent
                 LEFT JOIN Alimento ON carrito_alim.id_alimento=Alimento.id_alimento WHERE  id_estado_ent='2' AND carrito_alim.id_pedido='".$pedidos[$i]."'";
     $respuesta = mysqli_query($conexion, $consulta);
     while($row = mysqli_fetch_array($respuesta)){
@@ -52,6 +54,7 @@ if (count($pedidos)>1) {
         echo "      <th class=''>id_pedido</th>";
         echo "      <th class=''>Nombre Cliente</th>";
         echo "      <th class=''>Tipo cliente</th>";
+        echo "      <th class=''>Entrega</th>";
         echo "      <th class=''>Alimento</th>";
         echo "      <th class=''>Cantidad</th>";
         echo "    </tr>";
@@ -59,8 +62,9 @@ if (count($pedidos)>1) {
         echo "      <td class='Id'>".$row['id_pedido']."</td>";//imprime id pedido
         echo "      <td class='Nombre'>".$row['nombre']." ".$row['ApellidoP']." ".$row['ApellidoM']."</td>";//imprime nombre completo
         echo "      <td class=''>".$row['Tipo_cliente']."</td>";//imprime tipo_cliente
+        echo "      <td class='Id'>".$row['Lugar']."</td>";//imprime id pedido
       }else {
-        echo "      <td colspan='3'></td>";
+        echo "      <td colspan='4'></td>";
       }
       echo "        <td class='Alimento'>".$row['Nombre']."</td>";//imprime nombre del alimento
       echo "        <td class='Cantidad'>".$row['cantidad']."</td>";//imprime cuantos se pidieron de ese alimento
@@ -69,7 +73,7 @@ if (count($pedidos)>1) {
       $Total+=$row['precio']*$row['cantidad'];//se calcula en tiempo rela, justo antes de la entrega
     }
     echo "        <tr class='total'>";
-    echo "          <td colspan='4' class='total'>Total</td>";
+    echo "          <td colspan='5' class='total'>Total</td>";
     echo "          <td class='Cantidad'>$ ".$Total."</td>";//total de cuanto es de ese pedido
     echo "        </tr>";
     echo "      </table>";//se termina la tabla por pedido

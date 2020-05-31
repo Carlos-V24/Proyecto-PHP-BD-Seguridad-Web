@@ -35,12 +35,13 @@ function Error($tipo_error){
   elseif ($tipo_error=="007") {
     echo "No pueda aumentar la cantidad de un producto mas de 20";
   }
-
-  elseif ($tipo_error=="008") {
-    // code...
+  elseif ($tipo_error=="09") {
+    echo "Ese no es el usuario solicitado";
   }
-  elseif ($tipo_error=="009") {
-    // code...
+  elseif ($tipo_error=="010") {
+    echo "No es la contraseña del admin";
+  }elseif ($tipo_error=="011") {
+    echo "Ha habido un problema con el stock, porfavor modifique la cantidad de su producto";
   }
   echo "</div>";
 }

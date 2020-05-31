@@ -68,7 +68,7 @@ if (isset($_POST['Modificar'])) {
   include_once "Footer.php";
   Footer();
 }else {
-  echo "Ocurrio Un error";
+  setcookie("ERROR","001", time()+2);
   header("Location: ../dynamics/Inventario.php");
 }
 }else{

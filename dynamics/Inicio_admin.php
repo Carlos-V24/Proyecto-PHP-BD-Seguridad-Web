@@ -12,6 +12,10 @@ echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
   include_once "Cuest_form.php";
   include_once "bd.php";
   Barra_navegacion_empleados();
+  if (isset($_COOKIE['ERROR'])) {
+    include_once "Tipos_errores.php";
+    Error($_COOKIE['ERROR']);
+  }
   echo "<form action='Inicio_admin_DB.php' method='POST'>";
   echo "<article>";
     echo "<section class='Encabezado'>";

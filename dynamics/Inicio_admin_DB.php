@@ -18,6 +18,7 @@ session_start();
     header("Location:Pedidos_clientes.php");
   }
 }else {
-  echo "Ese usuario no es el solicitado";
+  setcookie("ERROR","09", time()+2);
+  header("Location:Inicio_admin.php");
 }
 ?>

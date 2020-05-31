@@ -22,8 +22,8 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
             $Alt[]=$row['cantidad'];
             $stock[]=$row['Stock'];
             if (intval($row['Stock'])<intval($row['cantidad'])) {
-              echo "Error";
-              Header("Location: Error.php");
+              setcookie("ERROR","011", time()+2);
+              header("Location: ../dynamics/Mis_pedidos.php");
             }
           }
           for ($i=0; $i <count($id) ; $i++) {
@@ -64,7 +64,8 @@ if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
       header("Location: Inicio.php");
     }
 }else {
-  echo "Error";
+  setcookie("ERROR","001", time()+2);
+  header("Location: ../dynamics/Mis_pedidos.php");
 }
 
 ?>
