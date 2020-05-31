@@ -17,13 +17,4 @@
     }
     return $con;
   }
-  function connectDB3($base, $psw) {
-    $con = mysqli_connect(DBHOST, 'ADMIN', $psw);
-    if (!$con)
-    {
-      setcookie("ERROR","010", time()+2);
-      header("Location:Inicio_admin.php");
-    }
-    return $con;
-  }
 ?>

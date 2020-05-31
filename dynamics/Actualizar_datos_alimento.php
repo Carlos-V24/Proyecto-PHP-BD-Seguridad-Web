@@ -82,7 +82,7 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
           }
         }
 }else {
-  echo "Error";
+  Header("Location: Inicio.php");
 }
 
 ?>
