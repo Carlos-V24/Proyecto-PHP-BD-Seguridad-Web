@@ -10,7 +10,7 @@ session_start();
   include_once "Barrara_navegacion.php";
   Barra_navegacion();
   echo "<div class='Bienvenida'>";
-  if(isset($_SESSION['psw']))
+  if(isset($_SESSION['Usuario']))
   {
     if ($_SESSION['Extra']>=1 && $_SESSION['Extra']<=98) {
       echo "Bienevenido Alumno: ".$_SESSION['Nombre'];
