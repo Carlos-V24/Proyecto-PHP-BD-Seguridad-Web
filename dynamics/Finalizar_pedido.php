@@ -1,4 +1,4 @@
-<?php //Finalizar_pedido.php
+<?php
 session_start();
 if( isset($_SESSION['Usuario']))
 {
@@ -103,6 +103,10 @@ echo "<meta charset='utf-8'>";
       echo "<input id='tipo_entrega' type='submit' name='".$row['id_tipo_ent']."' value=".$row['Tipo_entrega'].">";
     }
     echo " </form><br>";
+
+    if(isset($_COOKIE['Lugar_no_elegido'])){
+      echo $_COOKIE['Lugar_no_elegido'];
+    }
   }else {
     include_once "Tipos_errores.php";
     Alerta("Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;");
