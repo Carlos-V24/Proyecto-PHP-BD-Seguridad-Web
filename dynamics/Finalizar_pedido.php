@@ -76,13 +76,13 @@ echo "<meta charset='utf-8'>";
       }
       echo " </select><br>
             </div>";
+      echo "<input type='submit' name='Finalizar' value='Finalizar'>";
     }
     elseif(isset($_POST['1'])){
       echo "<div id='Lugar_entrega'>";
       $tipo_ent = $_POST['1'];
       echo "<label for='Lugar_entrega'><b>Lugar de Entrega</b></label><br>
       <select id='Lugar_entrega' name='Lugar_entrega'>";
-      echo "<option value='' >--Seleccione una opción--</option>";
       //Solicita todos los lugares de entrega
       $consulta = "SELECT id_lugar_entrega,Lugar FROM lugar_entrega WHERE id_tipo_ent='1'";
       $respuesta = mysqli_query($conexion, $consulta);
@@ -91,20 +91,22 @@ echo "<meta charset='utf-8'>";
       }
       echo " </select><br>
             </div>";
+      echo "<input type='submit' name='Finalizar' value='Finalizar'>";
     }
-
-
-    echo "<input type='submit' name='Finalizar' value='Finalizar'>
-          </form>";
+    echo "</form>";
     echo "<form action='Finalizar_pedido.php' method='POST'>
           <label for='tipo_entrega'>Elija un tipo de entrega:</label><br><br>";
-    //Solicita todos los lugares de entrega
+    //Solicita el tipo de entrega
     $consulta = "SELECT id_tipo_ent,Tipo_entrega FROM tipo_entrega ";
     $respuesta = mysqli_query($conexion, $consulta);
     while($row = mysqli_fetch_array($respuesta)){
       echo "<input id='tipo_entrega' type='submit' name='".$row['id_tipo_ent']."' value=".$row['Tipo_entrega'].">";
     }
     echo " </form><br>";
+
+    if(isset($_COOKIE['Lugar_no_elegido'])){
+      echo $_COOKIE['Lugar_no_elegido'];
+    }
   }else {
     include_once "Tipos_errores.php";
     Alerta("Usted ha sido penalizado por no recoger su pedido. Podra volver a solicitar pedidos hasta $Hasta;");
