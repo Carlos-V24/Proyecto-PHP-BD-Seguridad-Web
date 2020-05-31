@@ -1,4 +1,4 @@
-<?php
+<?php//diseño y funciones para la barra donde la persona se puedad mover con facilidad
 function Barra_navegacion(){
   echo "<header>
           <h1>Café <i<>\"El coyotito\"</i></h1>";
@@ -21,7 +21,8 @@ function Barra_navegacion(){
   echo "       </div>
             </nav><br>
           </header>";
-
+//en la primera parte se une con los php que estan conectados con la base de datos para su empleo
+//una barra para el uso de los Empleados
 }
 function Barra_navegacion_empleados(){
   echo "<header>

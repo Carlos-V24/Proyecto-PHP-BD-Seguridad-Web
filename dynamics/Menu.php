@@ -8,7 +8,7 @@ echo "<link rel='stylesheet' href='../statics/css/Error.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Menu_galeria.css'>";
 echo "<link rel='stylesheet' href='../statics/css/Estilo_menu.css'>";
 echo "<meta charset='utf-8'>";
-    include_once "Barrara_navegacion.php";
+    include_once "Barrara_navegacion.php";//conexión con Barra_navegacion
     include_once "bd.php";
     Barra_navegacion();
     //Conexion con la base de datos

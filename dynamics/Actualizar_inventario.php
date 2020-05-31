@@ -5,9 +5,16 @@ if (isset($_SESSION['Admin'])) {
   echo "<meta charset='utf-8'>";
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'";
+<<<<<<< HEAD
+    session_start ();
+    include_once "Func_favicon.php";//incluye  las imagenes de logo
+    include_once "Barrara_navegacion.php";//incluye las funciones para el uso del personal ya sea alumno o empleado
+    Barra_navegacion();
+=======
     include_once "Func_favicon.php";
     include_once "Barrara_navegacion.php";
     Barra_navegacion_empleados();
+>>>>>>> a156edbb2412083be98e3d2d06e4c849084402d1
     echo "<article>";
       echo "<form method='POST' action='Subir_producto.php' enctype='multipart/form-data'>";
         echo "<section class='Encabezado'>";
