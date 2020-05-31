@@ -1,5 +1,7 @@
 <?php
+//se recibe alimento elegido en el menu
 if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) && $_POST['id_'.$_POST['id_alimento']]=="Agregar al pedido") {
+    //se inicia sesion
   session_start();
   if( isset($_SESSION['psw']))
   {
@@ -13,6 +15,8 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
     echo mysqli_connect_errno()."<br>";
     exit();
   }
+
+  //se consutan datos del pedido del usuario
     $consulta = "SELECT * FROM Pedidoos WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' ";
     $respuesta = mysqli_query($conexion, $consulta);
     $Pedidos_Perosna=0;
@@ -20,6 +24,8 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
       if($row['id_cliente']==$_SESSION['Usuario'])
       $Pedidos_Perosna++;
     }
+
+    //Si está vacio se insertan los datos del nuevo pedido
     if ($Pedidos_Perosna==0) {
       $consulta = "INSERT INTO Pedidoos(id_cliente,id_estado_ent,id_lugar_entrega) VALUES ('".$_SESSION['Usuario']."','1','1')";
       $respuesta = mysqli_query($conexion, $consulta);
@@ -34,6 +40,7 @@ if (isset($_POST['id_alimento']) && isset($_POST['id_'.$_POST['id_alimento']]) &
       $respuesta = mysqli_query($conexion, $consulta);
       header("Location:Mis_pedidos.php");
     }else {
+      //sino simplemente se actualiza el estado del pedido
       $consulta = "SELECT id_pedido FROM Pedidoos WHERE id_cliente='".$_SESSION['Usuario']."' AND id_estado_ent='1' LIMIT 1";
       $respuesta = mysqli_query($conexion, $consulta);
       while($row = mysqli_fetch_array($respuesta)){

@@ -1,8 +1,14 @@
 <?php
+//recibiendo datos en caso de que se haya elegido la actualización de datos
 if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($_POST['Stock']) && isset($_POST['Nombre'])
     && isset($_POST['id_alimento']) && isset($_POST['Precio']) && $_POST['Stock']>=1
     && $_POST['id_alimento']>=1 && $_POST['Precio']>=.5) {
+
+//funciones para filtrar
   include_once "Filtrar.php";
+
+  /*Filtrando datos de los alimentos (si no coinciden con la validación se
+  aumenta la variable error)*/
   $Errores=0;
   if (preg_match('/^(\d{1,4})$/', $_POST['id_alimento']) && $_POST['id_alimento']>=1) {
     $id=Filtrar($_POST['id_alimento']);
@@ -28,6 +34,8 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
     echo "Error Stock";
     $Errores++;
   }
+
+  //si no hay errores entonces se prosigue a la conexión con la base
   if ($Errores==0) {
   include_once "bd.php";
   $conexion=connectDB2("coyocafe");
@@ -36,6 +44,8 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
     echo mysqli_connect_errno()."<br>";
     exit();
   }
+
+  //Se comprueba la existencia de un alimento
   $consulta = "SELECT id_alimento FROM alimento";
   $ListAl = mysqli_query($conexion, $consulta);
   $Alimento_existen=false;
@@ -44,6 +54,8 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
       $Alimento_existen=true;
     }
   }
+
+  //Si un alimento existe entonces se registra su modificacion en la base
   if ($Alimento_existen==true) {
     echo "Error: No existe ese alimento<br>";
   }elseif ($Alimento_existen==false ) {
@@ -53,13 +65,19 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
     mysqli_close($conexion);
     header("Location: ../dynamics/Inventario.php");
   }
+  //se imprimen datos del alimento
   echo $id."<br>";
   echo $Nombre."<br>";
   echo $Precio."<br>";
   echo $Stock."<br>";
 }
+
+
+//recibiendo datos en caso de elegir eliminacion de datos
 }elseif (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Eliminar'&& isset($_POST['Stock']) && isset($_POST['Nombre']) && isset($_POST['id_alimento'])){
         include_once "bd.php";
+
+        //se filtra
         if (preg_match('/^(\d{1,4})$/', $_POST['id_alimento']) && $_POST['id_alimento']>=1) {
           include_once "Filtrar.php";
           $id=Filtrar($_POST['id_alimento']);
@@ -67,12 +85,16 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
           echo "Error id";
           $Errores++;
         }
+
+        //se conecta
         $conexion=connectDB2("coyocafe");
         if(!$conexion) {
           echo mysqli_connect_error()."<br>";
           echo mysqli_connect_errno()."<br>";
           exit();
         }else {
+
+          //se elimina producto si no se tiene contemplado para un pedido
           $consulta = "DELETE FROM Alimento WHERE id_alimento='$id'";
           if (mysqli_query($conexion, $consulta)){
             echo "Nice";

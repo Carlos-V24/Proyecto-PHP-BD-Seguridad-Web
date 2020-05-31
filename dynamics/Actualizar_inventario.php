@@ -1,11 +1,15 @@
 <?php
+//se incluye estilo
   echo "<meta charset='utf-8'>";
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'";
+  //se inicia sesion y funciones
     session_start ();
     include_once "Func_favicon.php";
     include_once "Barrara_navegacion.php";
     Barra_navegacion();
+
+    //form para ingresar producto al inventario
     echo "<article>";
       echo "<form method='POST' action='Subir_producto.php'>";
         echo "<section class='Encabezado'>";
