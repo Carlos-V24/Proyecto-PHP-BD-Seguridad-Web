@@ -4,20 +4,32 @@ session_start();
   include_once "bd.php";
   include_once "Encrypt_PassW.php";
   include_once "Filtrar.php";
-  if ($_POST['Admin']=='ADMIN' && isset($_POST['Admin'])){
+  if ($_POST['Admin']=='Admin' && isset($_POST['Admin'])){
   $Contraseña=Filtrar($_POST['psw']);
-  $conexion=connectDB3("Coyocafe",$Contraseña);
+  $conexion=connectDB2("Coyocafe");
   if(!$conexion) {
-    echo "Contraseña incorrecta";
     echo mysqli_connect_error()."<br>";
     echo mysqli_connect_errno()."<br>";
     exit();
   }else {
-    $_SESSION['Admin']='Admin';
-    $_SESSION['psw']=$Contraseña;
-    header("Location:Pedidos_clientes.php");
+    $consulta = "SELECT Contraseña FROM Admin WHERE Usuario='Admin'";
+    $ContraseñaBD = mysqli_query($conexion, $consulta);
+    //Transforma de objeto a la contraseña
+    $ContraseñaBD = mysqli_fetch_row($ContraseñaBD);
+    $ContraseñaBD = $ContraseñaBD[0];
+    echo $ContraseñaBD;
+    if ($Contraseña == $ContraseñaBD) {
+      $_SESSION['Admin']='Admin';
+      $_SESSION['psw']=$Contraseña;
+      header("Location:Pedidos_clientes.php");
+    }else {
+      setcookie("ERROR","010", time()+2);
+      header("Location:Inicio_admin.php");
+    }
+
   }
 }else {
-  echo "Ese usuario no es el solicitado";
+  setcookie("ERROR","09", time()+2);
+  header("Location:Inicio_admin.php");
 }
 ?>

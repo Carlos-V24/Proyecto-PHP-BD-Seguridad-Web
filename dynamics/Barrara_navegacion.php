@@ -33,7 +33,7 @@ function Barra_navegacion_empleados(){
   if (isset($_SESSION['Admin'])) {
     echo "<a href='Pedidos_Finalizados.php'>Pedidos Finalizados</a>";
     echo "<a  href='Inventario.php'>Inventario</a>";
-    echo "<a  href='#.php'>Agregar producto</a>";
+    echo "<a  href='Actualizar_inventario.php'>Agregar producto</a>";
     echo "<a  href='Lista_clientes.php'>Clientes</a>";
     echo "<a  href='Lista_Negra.php'>Lista Negra</a>";
     echo "    <div class='nav-right'>

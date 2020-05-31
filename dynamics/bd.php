@@ -17,12 +17,4 @@
     }
     return $con;
   }
-  function connectDB3($base, $psw) {
-    $con = mysqli_connect(DBHOST, 'ADMIN', $psw);
-    if (!$con)
-    {
-      echo "No se ha podido acceder a la base. <br>";
-    }
-    return $con;
-  }
 ?>
