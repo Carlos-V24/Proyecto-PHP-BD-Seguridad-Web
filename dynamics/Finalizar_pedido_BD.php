@@ -1,12 +1,19 @@
 <?php
+//verificar que se quiera finalizar un pedido
 if ( isset($_POST['Finalizar']) && $_POST['Finalizar']=="Finalizar") {
+      //inicio sesion
       session_start();
+      //verificacion de usuario con sesion abierta
       if( isset($_SESSION['Usuario']))
       {
+        //se recibe lugar de entrega
         $lugar_ent = (isset($_POST['Lugar_entrega']))? $_POST['Lugar_entrega'] : 0;
+        //si se eligió entonces se capturan los datos en la base de datos
         if($lugar_ent > 0)
         {
           include_once "bd.php";
+
+          //conexion con base
           $conexion=connectDB2("coyocafe");
           if(!$conexion)
           {
