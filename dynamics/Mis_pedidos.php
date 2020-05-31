@@ -30,7 +30,7 @@ if(isset($_SESSION['Usuario']))
   //Da de valor inicial que aun ningun pedido
   $PedidosSEnv=false;
   $PedidosEnv=false;
-  //consulat los pedidos ya enviados para proyectarlos en lista
+  //consulta los pedidos ya enviados para proyectarlos en lista
   $consulta = "SELECT * FROM pedidoos WHERE  id_estado_ent='2' AND id_cliente='".$_SESSION['Usuario']."'";
     $respuesta = mysqli_query($conexion, $consulta);
     $UltID=0;

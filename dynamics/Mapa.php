@@ -1,5 +1,6 @@
 <?php
 //iniciando sesión
+//colo el mapa para referencia de puntos de entregas
 session_start();
   include_once "Func_favicon.php";
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";

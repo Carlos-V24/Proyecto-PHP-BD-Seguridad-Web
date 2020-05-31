@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['NomArticulo']) && isset($_POST['Cantidad']) && isset($_POST['Precio'])
-  && isset($_FILES['Foto_del_producto']) && $_FILES['Foto_del_producto']['error']==0)
+  && isset($_FILES['Foto_del_producto']) && $_FILES['Foto_del_producto']['error']==0)//verifica si los detalles del producto son correspondientes para que sean subidos
   {
   include_once "bd.php";
   echo $NomProdcto = $_POST["NomArticulo"];
@@ -23,6 +23,7 @@ if (isset($_POST['NomArticulo']) && isset($_POST['Cantidad']) && isset($_POST['P
       echo mysqli_connect_errno()."<br>";
       exit();
     }
+    //sube los datos a la base
     $subir = "SELECT id_alimento FROM alimento ORDER BY id_alimento DESC LIMIT 1";
     $ID = mysqli_query($conexion, $subir);
     $ID = mysqli_fetch_row($ID);
@@ -34,7 +35,7 @@ if (isset($_POST['NomArticulo']) && isset($_POST['Cantidad']) && isset($_POST['P
     var_dump($Stock);
     var_dump($Precio);
     var_dump($URL);
-
+    //Revisa si se realizo con exito la subida de los datos 
     $consulta = "INSERT INTO Alimento * VALUES ('$ID','$NomProdcto','$Stock','$Precio','$URL')";
     mysqli_query($conexion, $consulta);
     header('Location: Inventario.php');

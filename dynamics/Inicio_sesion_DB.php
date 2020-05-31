@@ -1,6 +1,7 @@
 <?php
+//inicia la secion
 session_start();
-if (isset($_POST['Usuario']) && isset($_POST['psw'])) {
+if (isset($_POST['Usuario']) && isset($_POST['psw'])) {//Reviza si usuario y la contraseña esten
   include_once "bd.php";
   include_once "Encrypt_PassW.php";
   include_once "Filtrar.php";
