@@ -1,4 +1,4 @@
-<?php
+<?php// se colocan a los alumnos que recibieron una sancion 
 session_name("Admin");
 session_start();
 if (isset($_SESSION['Admin'])) {

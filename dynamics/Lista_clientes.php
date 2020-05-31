@@ -1,4 +1,5 @@
 <?php
+//seción de admi 
 session_name("Admin");
 session_start();
 if (isset($_SESSION['Admin'])) {

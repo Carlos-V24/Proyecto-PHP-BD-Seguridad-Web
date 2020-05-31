@@ -1,6 +1,6 @@
 <?php
 /*Este es un archivo de funciones que permite
-  mandar las alerta y errores a traves de cookis*/
+  mandar las alerta y errores a traves de cookies*/
 
   //Aqui simplemente es un mensaje de alerta que no funciona con cookies
 function Alerta($mensaje){
