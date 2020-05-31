@@ -1,5 +1,7 @@
 <?php
+//nombre del admi
 session_name("Admin");
+//inicia secion del admi
 session_start();
 if (isset($_SESSION['Admin'])) {
 include_once "Func_favicon.php";

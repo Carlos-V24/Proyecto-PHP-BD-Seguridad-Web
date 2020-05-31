@@ -1,4 +1,4 @@
-<?php
+<?php//inicio de seción para los alumnos
 session_start();
 if(! isset($_SESSION['psw']))
 {

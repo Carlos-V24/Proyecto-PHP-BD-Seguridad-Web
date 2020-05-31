@@ -1,8 +1,8 @@
-<?php
+<?php//Conexion con base
   define("DBUSER","root");
   define("DBHOST","localhost");
   define("PASSWORD_BD","");
-  function connect () {
+  function connect () {//funcion de Conexion
     return mysqli_connect(DBHOST, DBUSER, PASSWORD_BD);
   }
   function connectDB1 ($conexion, $base) {
@@ -14,15 +14,6 @@
     if (!$con)
     {
       echo "No se ha podido acceder a la base. <br>";
-    }
-    return $con;
-  }
-  function connectDB3($base, $psw) {
-    $con = mysqli_connect(DBHOST, 'ADMIN', $psw);
-    if (!$con)
-    {
-      setcookie("ERROR","010", time()+2);
-      header("Location:Inicio_admin.php");
     }
     return $con;
   }

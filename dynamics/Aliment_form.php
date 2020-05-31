@@ -1,4 +1,4 @@
-<?php
+<?php//se solocitan lo datos de precio, Stock y alimento
 function Solicitar_Nom_ali($Value){
   echo "<label for='Nombre'><b>Nombre</b></label>";
   echo "<input type='text' placeholder='Nombre del alimento' name='Nombre' required maxlength='50' value='".$Value."'";

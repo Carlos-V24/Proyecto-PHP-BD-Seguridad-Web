@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 //recibiendo datos en caso de que se haya elegido la actualización de datos
 if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($_POST['Stock']) && isset($_POST['Nombre'])
     && isset($_POST['id_alimento']) && isset($_POST['Precio']) && $_POST['Stock']>=1
@@ -9,26 +10,32 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
 
   /*Filtrando datos de los alimentos (si no coinciden con la validación se
   aumenta la variable error)*/
+=======
+if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($_POST['Stock']) && isset($_POST['Nombre'])//verifica si estan en post los datos de actualizar, stock y nombre
+    && isset($_POST['id_alimento']) && isset($_POST['Precio']) && $_POST['Stock']>=1//si se encuntran los id_alimento, stock y precio se le dan e valor de 1
+    && $_POST['id_alimento']>=1 && $_POST['Precio']>=.5) {
+  include_once "Filtrar.php";//se eliminan caracteres especiales y etiquetas
+>>>>>>> 884b0945f932328e5648e818acac2516d7b55c59
   $Errores=0;
-  if (preg_match('/^(\d{1,4})$/', $_POST['id_alimento']) && $_POST['id_alimento']>=1) {
+  if (preg_match('/^(\d{1,4})$/', $_POST['id_alimento']) && $_POST['id_alimento']>=1) { //regex
     $id=Filtrar($_POST['id_alimento']);
   }else {
     echo "Error id";
     $Errores++;
   }
-  if (preg_match('/^([\w_ÑñÁÉÍÓÚáéíóú]+( *|))+$/', $_POST['Nombre'])) {
+  if (preg_match('/^([\w_ÑñÁÉÍÓÚáéíóú]+( *|))+$/', $_POST['Nombre'])) {//regex
       $Nombre=Filtrar($_POST['Nombre']);
   }else {
     echo "Error Nombre";
     $Errores++;
   }
-  if (preg_match('/^(\d{1,2}|0.5)$/', $_POST['Precio'])) {
+  if (preg_match('/^(\d{1,2}|0.5)$/', $_POST['Precio'])) {//regex
     $Precio=Filtrar($_POST['Precio']);
   }else {
     echo "Error Precio";
     $Errores++;
   }
-  if (preg_match('/^\d{1,3}$$/', $_POST['Stock'])) {
+  if (preg_match('/^\d{1,3}$$/', $_POST['Stock'])) {//regex
     $Stock=Filtrar($_POST['Stock']);
   }else {
     echo "Error Stock";
@@ -38,17 +45,21 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
   //si no hay errores entonces se prosigue a la conexión con la base
   if ($Errores==0) {
   include_once "bd.php";
-  $conexion=connectDB2("coyocafe");
+  $conexion=connectDB2("coyocafe");//conexión con Base de datos
   if(!$conexion) {
     echo mysqli_connect_error()."<br>";
     echo mysqli_connect_errno()."<br>";
     exit();
   }
+<<<<<<< HEAD
 
   //Se comprueba la existencia de un alimento
   $consulta = "SELECT id_alimento FROM alimento";
+=======
+  $consulta = "SELECT id_alimento FROM alimento";//consulta los datos de la base de datos al alimentos
+>>>>>>> 884b0945f932328e5648e818acac2516d7b55c59
   $ListAl = mysqli_query($conexion, $consulta);
-  $Alimento_existen=false;
+  $Alimento_existen=false;//el alimento no existe
   while($row = mysqli_fetch_array($ListUs)){
     if ($row['id_alimento']==$id){
       $Alimento_existen=true;
@@ -104,7 +115,7 @@ if (isset($_POST['Actualizar']) && $_POST['Actualizar']=='Actualizar' && isset($
           }
         }
 }else {
-  echo "Error";
+  Header("Location: Inicio.php");
 }
 
 ?>
