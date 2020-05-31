@@ -1,7 +1,9 @@
 <?php
+//se verifican datos de usuario
 if((isset($_POST['NCuenta'])||isset($_POST['RFC'])||isset($_POST['NTrabajador'])) && isset($_POST['Nombre']) &&
   (isset($_POST['Grupo'])||isset($_POST['Colegio'])||isset($_POST['Extra'])) && isset($_POST['psw']) &&
   isset($_POST['psw-repeat']) && isset($_POST['ApellidoP']) && isset($_POST['ApellidoM'])) {
+    //funciones
     include_once "Encrypt_PassW.php";
     include_once "Filtrar.php";
     $RFCRequerimientos=0;

@@ -1,5 +1,5 @@
 <?php
-//iniciando sesión
+//iniciando sesion de empleado
 session_name("Admin");
 session_start();
 //solo si se presiona se cierra session y se redirige a la página principal
