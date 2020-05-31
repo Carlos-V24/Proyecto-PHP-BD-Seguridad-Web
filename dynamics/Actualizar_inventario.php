@@ -3,8 +3,8 @@
   echo "<link rel='stylesheet' href='../statics/css/Barra_navegacion.css'>";
   echo "<link rel='stylesheet' href='../statics/css/Estilo_cuestionarios.css'";
     session_start ();
-    include_once "Func_favicon.php";
-    include_once "Barrara_navegacion.php";
+    include_once "Func_favicon.php";//incluye  las imagenes de logo
+    include_once "Barrara_navegacion.php";//incluye las funciones para el uso del personal ya sea alumno o empleado
     Barra_navegacion();
     echo "<article>";
       echo "<form method='POST' action='Subir_producto.php'>";
